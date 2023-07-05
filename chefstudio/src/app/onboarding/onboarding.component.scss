@@ -2,68 +2,77 @@
 .onboarding{
     position: relative;
     height: 100vh;
-    background-color: hsl(159, 55%, 95%);
 
     &-body{
         // left: 50%;
         // transform: translate(-50%, -50%);
-        height: 100vh;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: max-content max-content max-content max-content;
-        justify-items: center;
-        align-content: space-between;
+        // height: 100vh;
+        // display: grid;
+        // grid-template-columns: 1fr;
+        // grid-template-rows: max-content max-content max-content max-content;
+        // justify-items: center;
+        // align-content: space-between;
         padding: 6rem 2rem 3rem 2rem;
         
     }
 
     &-title{
+        opacity: 0;
         color: hsl(159, 55%, 25%);
         font-size: 3rem;
         font-weight: bolder;
+        animation: fade-in 1s ease-in-out forwards;
     }
 
     &-image{
-        min-width: 60vw;
-        display: grid;
-        justify-content: center;
-        align-items: center;
+        // min-width: 60vw;
+        // display: grid;
+        // justify-content: center;
+        // align-items: center;
         // background-color: #1d634a;
-        border-radius: 2rem;
+        // border-radius: 2rem;
+        // padding: 5rem 0;
+        img{
+            opacity: 0;
+            padding: 5rem 0;
+            animation: fade-in 1s ease-in-out 1s forwards;
+        }
+    }
+
+    &-content{
+        margin-bottom: 5rem;
     }
 
     &-text{
+
         h2{
+            opacity: 0;
             font-size: 3rem;
             font-weight: bolder;
             color: hsl(159, 55%, 25%);
             margin-bottom: 0;
+            animation: fade-in 1s ease-in-out 2s forwards;
         }
 
         p{
+            opacity: 0;
             font-size: 1.5rem;
             font-weight: 400;
             color: hsl(159, 55%, 25%);
+            animation: fade-in 1s ease-in-out 3s forwards;
         }
     }
 
 
     &-button{
-        outline: none;
-        // border: 1px solid rgb(28, 97, 74);
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: 1rem;
+        opacity: 0;
         font-size: 1.5rem;
-        font-weight: bolder;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        width: 80vw;
-        background-color: rgb(28, 97, 74);
-        color: hsl(159, 55%, 95%);
-        // color: rgb(28, 97, 74);
-        cursor: pointer;
-        transition: all .2s ease-in;
+        padding: 1.5rem 0;
+        animation: fade-in 1s ease-in-out 4s forwards;
+
+        @media screen and (min-width: 720px) {
+            font-size: 2rem
+        }
     }
 
     // &-button:hover{

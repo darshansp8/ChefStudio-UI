@@ -1,2 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+$primary: hsl(159, 55%, 25%);
+$body-bg: hsl(159, 55%, 95%);
+
 @import "scss/base";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/variables";
+

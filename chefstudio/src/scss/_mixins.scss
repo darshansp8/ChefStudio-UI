@@ -1,1 +1,14 @@
 // Media Queries
+/*
+0-600px: Phone[Normal style will apply here]
+600-900px: Tablet(Portrait)
+900-1200px: Tablet(Landscape)
+1200-1800px: Desktop
+1800px +: Big Desktop 
+*/
+
+@mixin respond-tablet{
+    @media (min-width: 600px){
+        @content
+    };
+}
