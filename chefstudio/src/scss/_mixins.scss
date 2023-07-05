@@ -12,3 +12,8 @@
         @content
     };
 }
+
+@mixin primary-title{
+    font-size: 3rem;
+    font-weight: bolder;
+}
