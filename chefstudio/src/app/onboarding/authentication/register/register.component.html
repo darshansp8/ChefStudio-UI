@@ -1,8 +1,56 @@
-<section class="container register">
-    <div class="row min-vh-100">
-        <div class="col-lg-4 col-xl-4 col-sm-12 register-left align-self-start">
-            <h1 class="register-title text-primary text-center">ChefStudio</h1>
+<section class="register container-fluid">
+    <div class="row min-vh-100 justify-content-center align-items-center no-gutters">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-6 col-xl-6 login-text d-none d-lg-block">
+            <div class="row">
+                <h1 class="login-title col-12 text-center text-primary">ChefStudio</h1>
+                <picture class="col-10 mx-auto">
+                    <img src="../../../../assets/onboarding.svg" alt="" class="img-fluid">
+                </picture>
+            </div>
         </div>
-        <div class="col-lg-4 col-xl-4 col-sm-12 register-right"></div>
+        <div class="col-12 col-sm-12 col-lg-6 col-xl-6 register-message">
+            <div class="row">
+                <h1 class="login-title col-12 text-center text-primary d-lg-none d-block mb-5">ChefStudio</h1>
+                <h2 class="col-12 text-center text-primary login-subtitle">Create an account</h2>
+                <p class="col-12 text-center register-para">Let's get started by creating a free account</p>
+                <div class="form-container col-12 col-sm-12 col-md-8 col-lg-12 col-xl-8 mx-auto">
+                    <form action="#" class="col-10 mx-auto">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control form-control-lg" aria-describedby="nameHelp" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control form-control-lg" aria-describedby="emailHelp" placeholder="johndoe@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-control form-control-lg" aria-describedby="passwordHelp" placeholder="********">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="rememberMe">
+                              <label class="form-check-label" for="rememberMe">
+                                Remember Me
+                              </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-12">
+                                <button 
+                                    routerLink="/user-details"
+                                    class="btn btn-primary col-12 mb-2 form-primaryaction">Sign In</button>
+                            </div>
+                            <div class="col-12">
+                                <button 
+                                    routerLink="/user-details"
+                                    class="btn btn-outline-primary col-12 form-secondaryaction">Sign In with Google</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center ">Already have an account? <a routerLink="/login">Sign In</a></p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

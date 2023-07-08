@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 import { LoginComponent } from './onboarding/authentication/login/login.component';
 import { RegisterComponent } from './onboarding/authentication/register/register.component';
+import { UserDetailsComponent } from './onboarding/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RegisterComponent } from './onboarding/authentication/register/register
     HeaderComponent,
     OnboardingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

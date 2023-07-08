@@ -1,0 +1,53 @@
+@import "../../../../scss/animations";
+@import "../../../../scss/mixins";
+.login{
+
+    &-title{
+        @include primary-title;
+        // opacity: 0;
+        // animation: fade-in 1s ease-in-out forwards;
+    }
+
+    &-subtitle{
+        font-size: 2rem;
+    }
+
+    &-para{
+        font-size: 1.2rem;
+    }
+}
+
+.form-container{
+    padding: 3rem 0;
+    .form-group{
+        margin-bottom: 2rem;
+
+        label{
+            font-size: 1.5rem;
+        }
+        .form-control{
+            padding: 1rem 1rem 1rem 1rem;
+            border: none;
+            background-color: hsl(159, 55%, 90%);
+        }
+
+        .form-check-input{
+            padding: .6rem;
+            background-color: hsl(159, 55%, 90%);
+        }
+
+        .form-check-input:checked{
+            color: hsl(159, 55%, 25%);
+        }
+        .form-check-label{
+            padding-left: .3rem;
+            font-size: 1.2rem;
+        }
+
+        .form-primaryaction, .form-secondaryaction{
+            font-size: 1.5rem;
+            padding: 1rem 0;
+        }
+    }
+
+}

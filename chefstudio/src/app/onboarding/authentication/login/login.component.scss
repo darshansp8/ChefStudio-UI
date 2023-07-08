@@ -2,13 +2,10 @@
 @import "../../../../scss/mixins";
 .login{
 
-    &-text{
-        // padding: 6rem 2rem 2rem 2rem;
-    }
     &-title{
         @include primary-title;
-        opacity: 0;
-        animation: fade-in 1s ease-in-out forwards;
+        // opacity: 0;
+        // animation: fade-in 1s ease-in-out forwards;
     }
 
     &-subtitle{

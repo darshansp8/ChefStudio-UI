@@ -1,0 +1,75 @@
+<section class="user-details bg-primary">
+    <div class="row h-100">
+        <div class="col-12 col-lg-6 col-xl-6 mx-auto bg-primary">
+            <div class="row h-100">
+                <a href="#" class="d-flex justify-content-end align-self-start text-light user-details-skip">Skip</a>
+                <div 
+                    *ngIf="step==1"
+                    class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
+                    <p class="user-details-question text-light">What are your diet preferences?</p>
+                    <div 
+                        class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
+                        <button 
+                        *ngFor="let option of preference_options"
+                        [ngClass]="{'btn-light text-dark': option.selected}"
+                        class="btn btn-secondary text-light user-details-option"
+                        (click)="toggleOption(option)">
+                    {{ option.name}}
+                    </button> 
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-center align-self-end">
+                        <button 
+                            class="btn btn-dark col-5 mx-auto user-details-next" 
+                            (click)="showOptions()">
+                            Next
+                        </button>
+                    </div>
+                </div>
+                <div 
+                    *ngIf="step==2"
+                    class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
+                    <p class="user-details-question text-light">What are your diet preferences?</p>
+                    <div 
+                        class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
+                        <button 
+                        *ngFor="let option of category_options"
+                        [ngClass]="{'btn-light text-dark': option.selected}"
+                        class="btn btn-secondary text-light user-details-option"
+                        (click)="toggleOption(option)">
+                    {{ option.name}}
+                    </button> 
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-center align-self-end">
+                        <button 
+                            class="btn btn-dark col-5 mx-auto user-details-next" 
+                            (click)="showOptions()">
+                            Next
+                        </button>
+                    </div>
+                </div>
+                <div 
+                    *ngIf="step==3"
+                    class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
+                    <p class="user-details-question text-light">What are your diet preferences?</p>
+                    <div 
+                        class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
+                        <button 
+                        *ngFor="let option of preference_options"
+                        [ngClass]="{'btn-light text-dark': option.selected}"
+                        class="btn btn-secondary text-light user-details-option"
+                        (click)="toggleOption(option)">
+                    {{ option.name}}
+                    </button> 
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-center align-self-end">
+                        <button 
+                            class="btn btn-dark col-5 mx-auto user-details-next" 
+                            (click)="saveDetails()">
+                            Done
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+.user-details{
+    height: 100vh;
+    padding: 6rem 2rem;
+
+    &-skip{
+        font-size: 1.5rem;
+    }
+
+    &-question{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    &-option, &-next{
+        font-size: 1.5rem;
+        // margin-right: .5rem;
+    }
+
+}
+
+.question-body{
+    height: 50vh;
+}
+
+.options{
+    // padding: 3rem 0;
+    height: 15vh;
+}
