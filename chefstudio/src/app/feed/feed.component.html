@@ -1,0 +1,12 @@
+<section class="feed">
+    <div class="row">
+        <div class="col-12">
+            <app-home *ngIf="loadedSelection == 'home'"></app-home>
+            <app-search *ngIf="loadedSelection == 'search'"></app-search>
+            <app-user-profile *ngIf="loadedSelection == 'profile'"></app-user-profile>
+        </div>
+        <div class="fixed-bottom p-4 col-12 d-block d-lg-none d-xl-none">
+            <app-feed-navigation (selector)="onNavigate($event)"></app-feed-navigation>
+        </div>
+    </div>
+</section>

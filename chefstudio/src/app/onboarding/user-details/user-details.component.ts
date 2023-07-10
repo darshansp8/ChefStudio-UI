@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent {
+
+  constructor(private router: Router){}
   step=1
 
   preference_options = [
@@ -30,6 +33,13 @@ export class UserDetailsComponent {
     {name: "World Cuisine", selected: false}
   ]
 
+  cooktime_options = [
+    {name: "Quick and easy", selected: false},
+    {name: "Moderately quick", selected: false},
+    {name: "Flexible", selected: false},
+    {name: "Leisurely", selected: false},
+  ]
+
   toggleOption(option: any){
     option.selected = !option.selected;
   }
@@ -49,6 +59,7 @@ export class UserDetailsComponent {
   }
 
   saveDetails(){
-    console.log("Done")
+    console.log("Done");
+    this.router.navigate(['/feed'])
   }
 }
