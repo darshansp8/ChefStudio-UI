@@ -1,7 +1,78 @@
 <header class="header">
-    <div class="row">
-        <div class="col-4 text-center"><a (click)="onSelect('home')">Home</a></div>
-        <div class="col-4 text-center"><a (click)="onSelect('search')">Search</a></div>
-        <div class="col-4 text-center"><a (click)="onSelect('profile')">Profile</a></div>
+    <div class="row d-block d-lg-none">
+        <div class="col-10 mx-auto bg-dark rounded">
+            <div class="row p-4 justify-content-center">
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('home')" class="header-link text-light"><fa-icon [icon]="faHome"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('search')" class="header-link text-light"><fa-icon [icon]="faSearch"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('add')" class="header-link text-light"><fa-icon [icon]="faPlus"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('saved')" class="header-link text-light"><fa-icon [icon]="faSave"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('profile')" class="header-link text-light"><fa-icon [icon]="faProfile"></fa-icon></a></div>
+            </div>
+        </div>     
+    </div>
+    <div class="row d-none d-lg-block">
+        <div class="col-12">
+            <h2 class="mb-4 header-primary-title">
+                <a href="#" class="header-brand">ChefStudio</a>
+            </h2>
+        </div>
+        <div class="col-12 text-light p-4 link-container">
+            <a (click)="onSelect('home')" class="header-link">
+                <div class="row">
+                    <div class="col-2">
+                        <fa-icon [icon]="faHome" class="mr-2"></fa-icon>
+                    </div>
+                    <div class="col-10">Home</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 text-light p-4 link-container">
+            <a (click)="onSelect('search')" class="header-link">
+                <div class="row">
+                    <div class="col-2">
+                        <fa-icon [icon]="faSearch"></fa-icon>
+                    </div>
+                    <div class="col-10">
+                        Search
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 text-light p-4 link-container">
+            <a (click)="onSelect('add')" class="header-link">
+                <div class="row">
+                    <div class="col-2">
+                        <fa-icon [icon]="faPlus"></fa-icon>
+                    </div>
+                    <div class="col-10">
+                        Add
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 text-light p-4 link-container">
+            <a (click)="onSelect('saved')" class="header-link">
+                <div class="row">
+                    <div class="col-2">
+                        <fa-icon [icon]="faSave"></fa-icon>
+                    </div>
+                    <div class="col-10">
+                        Saved
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 text-light p-4 link-container">
+            <a (click)="onSelect('profile')" class="header-link">
+                <div class="row">
+                    <div class="col-2">
+                        <fa-icon [icon]="faProfile"></fa-icon>
+                    </div>
+                    <div class="col-10">
+                        Profile
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </header>

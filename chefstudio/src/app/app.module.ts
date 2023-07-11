@@ -13,6 +13,7 @@ import { HomeComponent } from './feed/home/home.component';
 import { SearchComponent } from './feed/search/search.component';
 import { UserProfileComponent } from './feed/user-profile/user-profile.component';
 import { FeedNavigationComponent } from './feed/feed-navigation/feed-navigation.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FeedNavigationComponent } from './feed/feed-navigation/feed-navigation.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
