@@ -3,7 +3,7 @@
         <div class="col-lg-2 col-xl-2 d-none d-lg-block feed-navigate">
             <app-feed-navigation (selector)="onNavigate($event)"></app-feed-navigation>
         </div>
-        <div class="col-12 col-lg-8 col-xl-8">
+        <div class="col-12 col-lg-10 col-xl-10">
             <app-home *ngIf="loadedSelection == 'home'"></app-home>
             <app-search *ngIf="loadedSelection == 'search'"></app-search>
             <app-user-profile *ngIf="loadedSelection == 'profile'"></app-user-profile>
