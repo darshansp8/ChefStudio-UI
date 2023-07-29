@@ -13,9 +13,15 @@
                         aria-label="Recipient's username" 
                         aria-describedby="basic-addon2"
                         ngModel
-                        name="search">
+                        name="search"
+                        required>
                     <span class="input-group-text search-icon" id="basic-addon2">
-                        <button class="btn" type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+                        <button 
+                            class="btn" 
+                            type="submit"
+                            [disabled]="!f.valid">
+                            <fa-icon [icon]="faSearch"></fa-icon>
+                        </button>
                     </span>
                 </div>
 
@@ -94,126 +100,64 @@
     </div>
 </section>
 
+<!-- Search Result -->
 <section 
-    class="search-result position-fixed"
+    class="search-result position-absolute"
     *ngIf="displayResult">
     <div class="row">
-        <h1>View Results here</h1>
+        <h2 class="mb-5">
+            <a (click)="closeSearchResult()" class="text-center back-icon">
+                <fa-icon [icon]="faBack1"></fa-icon>
+            </a>
+        </h2>
+        <h1 class="mb-3">View Results here</h1>
         <div class="row">
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
+            <div 
+                class="col-12 col-md-4 col-lg-3 col-xl-3 mb-4 mx-auto"
+                *ngFor="let recipe of resultArray">
                 <div class="recipe">
                     <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
+                        <img [src]="recipe.images" alt="{{recipe.name}}" class="img-fluid">
                     </div>
                     <div class="recipe-body">
                         <div class="row px-2">
                             <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
+                                <p>Ratings <span>{{recipe.rating}} ratings</span></p>
                             </div>
                             <div class="col-2 d-flex flex-column align-items-end">
                                 <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
                             </div>
                         </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
+                        <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
+                         <p class="recipe-description px-2">{{recipe.description}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
-                <div class="recipe">
-                    <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
-                    </div>
-                    <div class="recipe-body">
-                        <div class="row px-2">
-                            <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
-                            </div>
-                            <div class="col-2 d-flex flex-column align-items-end">
-                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
-                            </div>
-                        </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
-                <div class="recipe">
-                    <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
-                    </div>
-                    <div class="recipe-body">
-                        <div class="row px-2">
-                            <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
-                            </div>
-                            <div class="col-2 d-flex flex-column align-items-end">
-                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
-                            </div>
-                        </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
-                <div class="recipe">
-                    <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
-                    </div>
-                    <div class="recipe-body">
-                        <div class="row px-2">
-                            <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
-                            </div>
-                            <div class="col-2 d-flex flex-column align-items-end">
-                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
-                            </div>
-                        </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
-                <div class="recipe">
-                    <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
-                    </div>
-                    <div class="recipe-body">
-                        <div class="row px-2">
-                            <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
-                            </div>
-                            <div class="col-2 d-flex flex-column align-items-end">
-                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
-                            </div>
-                        </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-4">
-                <div class="recipe">
-                    <div class="recipe-image">
-                        <img src="../../../assets/biryani.jpeg" alt="Chicken Biryani" class="img-fluid">
-                    </div>
-                    <div class="recipe-body">
-                        <div class="row px-2">
-                            <div class="col-10">
-                                <p>Ratings <span>234 ratings</span></p>
-                            </div>
-                            <div class="col-2 d-flex flex-column align-items-end">
-                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
-                            </div>
-                        </div>
-                        <h4 class="recipe-title px-2">Chicken Biryani</h4>    
-                         <p class="recipe-description px-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit asperiores veniam adipisci ducimus ea nesciunt voluptas ratione, distinctio officia placeat nobis incidunt culpa accusantium consequuntur impedit mollitia, doloremque numquam repellat?</p>
-                    </div>
-                </div>
-            </div>
+            </div>    
         </div>
+        <!-- <div class="card-columns">
+            <div 
+                class="card mb-4"
+                *ngFor="let recipe of resultArray">
+                <div class="recipe">
+                    <div class="recipe-image">
+                        <img [src]="recipe.images" alt="{{recipe.name}}" class="img-fluid">
+                    </div>
+                    <div class="recipe-body">
+                        <div class="row px-2">
+                            <div class="col-10">
+                                <p>Ratings <span>{{recipe.rating}} ratings</span></p>
+                            </div>
+                            <div class="col-2 d-flex flex-column align-items-end">
+                                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
+                            </div>
+                        </div>
+                        <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
+                         <p class="recipe-description px-2">{{recipe.description}}</p>
+                    </div>
+                </div>
+            </div>    
+        </div> -->
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
