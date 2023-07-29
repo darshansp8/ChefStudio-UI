@@ -14,6 +14,7 @@ import { SearchComponent } from './feed/search/search.component';
 import { UserProfileComponent } from './feed/user-profile/user-profile.component';
 import { FeedNavigationComponent } from './feed/feed-navigation/feed-navigation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

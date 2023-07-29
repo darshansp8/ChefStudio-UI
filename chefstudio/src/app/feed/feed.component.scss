@@ -1,7 +1,9 @@
 .feed{
-    height: 100vh;
+    // max-height: 100vh;
     // padding: 6rem 2rem 2rem 2rem;
-    overflow: hidden;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
 
     &-navigate{
         min-height: 100vh;
