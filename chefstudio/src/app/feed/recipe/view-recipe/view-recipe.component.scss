@@ -1,0 +1,16 @@
+.recipe{
+    padding: 6rem;
+
+
+    &-image{
+        border-radius: 1rem;
+    }
+    &-text{
+        font-size: 1.4rem;
+    }
+
+    &-subtitle{
+        border-left: .5rem solid hsl(159, 55%, 25%);
+        padding-left: .5rem;
+    }
+}

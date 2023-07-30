@@ -1,7 +1,39 @@
-<div class="container">
+<div class="container recipe">
     <div class="row">
+        <h2 class="mb-5">
+            <a (click)="backToFeed()" class="text-center back-icon">
+                <fa-icon [icon]="faBack1"></fa-icon>
+            </a>
+        </h2>
+    </div>
+    <div class="row mt-5">
         <div class="col-12">
-            <h1>{{selectedRecipe?.authorId}}</h1>
+            <div class="row">
+                <div class="col-5">
+                    <img [src]="selectedRecipe?.images" alt="" class="img-fluid recipe-image">
+                </div>
+                <div class="col-7 px-5">
+                    <h1 class="mb-2 recipe-title ">{{selectedRecipe?.name}}</h1>
+                    <h4 class="mb-4">{{selectedRecipe?.category}}</h4>
+                    <p class="recipe-text mb-5">{{selectedRecipe?.description}}</p>
+                    <p class="mb-4 recipe-text">{{selectedRecipe?.keywords}}</p>
+                    <div class="row d-flex flex-column">
+                        <p class="mb-2 recipe-text">Cook Time: {{selectedRecipe?.cookTime}}</p>
+                        <p class="mb-2 recipe-text">Prep Time: {{selectedRecipe?.prepTime}}</p>
+                        <p class="mb-5 recipe-text">Total Time: {{selectedRecipe?.totalTime}}</p>
+                    </div>
+                    <h3 class="mb-4 recipe-subtitle">Instructions</h3>
+                    <!-- <ul>
+                        <li *ngFor="let instruction of selectedRecipe?.recipeInstructionsArray">{{instruction}}</li>
+                    </ul> -->
+                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeInstructions | toStringArray}}</p>
+                    <h3 class="mb-4 recipe-subtitle" *ngIf="selectedRecipe?.recipeIngredients">Ingredients</h3>
+                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeIngredients}}</p>
+                    <!-- <h3 class="mb-4 recipe-subtitle">Category</h3> -->
+                </div>
+            </div>
+            <!-- <h1>{{selectedRecipe?.authorId}}</h1> -->
         </div>
     </div>
 </div>
+<h1 *ngIf="!recipeId">No such recipe found</h1>

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faBookBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Recipe } from 'src/app/recipe.model';
 import { RecipeService } from '../../recipe.service';
 
@@ -11,6 +12,8 @@ import { RecipeService } from '../../recipe.service';
 })
 export class SearchResultComponent {
   faBookmark = faBookmark
+  faBookmarkFilled = faBookBookmark
+  // faBookmarkIcon = Bookm
 
   @Input() recipe: Recipe;
 

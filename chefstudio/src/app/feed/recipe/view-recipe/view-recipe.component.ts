@@ -2,6 +2,7 @@ import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { Recipe } from 'src/app/recipe.model';
 import { RecipeService } from '../../recipe.service';
@@ -12,6 +13,9 @@ import { RecipeService } from '../../recipe.service';
   styleUrls: ['./view-recipe.component.scss']
 })
 export class ViewRecipeComponent implements OnInit {
+
+faBack1 = faArrowLeft
+
 
   selectedRecipe: Recipe | null;
   recipeId: any;
@@ -38,13 +42,31 @@ export class ViewRecipeComponent implements OnInit {
         .subscribe((response: any) => {
           try {
             this.selectedRecipe = response['recipe'][0]
+            console.log(this.selectedRecipe)
+            console.log(this.selectedRecipe?.recipeIngredients)
+            
           } catch (error) {
             console.error(error)
           }
 
         })
     }
+    console.log("Outside If")
+    if( this.selectedRecipe?.recipeIngredientsArray){
+      console.log("Inside If")
+      this.selectedRecipe.recipeInstructionsArray = this.selectedRecipe?.recipeInstructions?.split(".,");
+      console.log(this.selectedRecipe?.recipeIngredientsArray)
+    }
+
   }
 
+  backToFeed() {
+
+  }
+
+
+  // transformStringtoArray(){
+  //   var instructionList = this.selectedRecipe?.recipeInstructions.split(".,");
+  // }
 
 }

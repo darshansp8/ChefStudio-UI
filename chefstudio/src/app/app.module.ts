@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './feed/search/search-result/search-result.component';
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
+import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.compo
     UserProfileComponent,
     FeedNavigationComponent,
     SearchResultComponent,
-    ViewRecipeComponent
+    ViewRecipeComponent,
+    ToStringArrayPipe
   ],
   imports: [
     BrowserModule,

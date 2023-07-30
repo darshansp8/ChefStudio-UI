@@ -17,4 +17,6 @@ export interface Recipe {
     name?: string,
     recipeInstructions?: string,
     recipeIngredients?: string,
+    recipeInstructionsArray?: string[],
+    recipeIngredientsArray?: string[],
 }
