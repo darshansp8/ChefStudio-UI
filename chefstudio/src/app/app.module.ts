@@ -16,7 +16,8 @@ import { UserProfileComponent } from './feed/user-profile/user-profile.component
 import { FeedNavigationComponent } from './feed/feed-navigation/feed-navigation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-import { SearchResultComponent } from './search/search-result/search-result.component';
+import { SearchResultComponent } from './feed/search/search-result/search-result.component';
+import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SearchResultComponent } from './search/search-result/search-result.comp
     SearchComponent,
     UserProfileComponent,
     FeedNavigationComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    ViewRecipeComponent
   ],
   imports: [
     BrowserModule,

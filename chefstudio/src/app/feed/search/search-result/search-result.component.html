@@ -1,0 +1,17 @@
+<div class="recipe" (click)="onSelected()">
+    <div class="recipe-image">
+        <img [src]="recipe.images" alt="{{recipe.name}}" class="img-fluid">
+    </div>
+    <div class="recipe-body">
+        <div class="row px-2">
+            <div class="col-10">
+                <p>Ratings <span>{{recipe.rating}} ratings</span></p>
+            </div>
+            <div class="col-2 d-flex flex-column align-items-end">
+                <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
+            </div>
+        </div>
+        <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
+            <p class="recipe-description px-2">{{recipe.description}}</p>
+    </div>
+</div>
