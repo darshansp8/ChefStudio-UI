@@ -14,7 +14,7 @@ export class ApiServiceService {
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
-		return this.http.get<Recipe[]>(this.searchRecipeUrl, {params: queryParams})
+		return this.http.get<any>(this.searchRecipeUrl, {params: queryParams})
 	}
 
 	getRecipeById(id: number){
