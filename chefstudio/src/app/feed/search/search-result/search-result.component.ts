@@ -17,8 +17,8 @@ export class SearchResultComponent {
   constructor(private recipeService: RecipeService, private router: Router){}
 
   onSelected(){
-    // this.router.navigate(['/recipe']);
     this.recipeService.recipeSelected.emit(this.recipe);
+    this.router.navigate(['/recipe', this.recipe.recipeId]);
     
   }
 }

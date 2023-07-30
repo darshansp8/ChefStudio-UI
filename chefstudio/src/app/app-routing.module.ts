@@ -15,7 +15,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'user-details', component: UserDetailsComponent},
   {path: 'feed', component: FeedComponent},
-  { path: 'recipe', component: ViewRecipeComponent },
+  {path: 'recipe', component: ViewRecipeComponent},
+  { path: 'recipe/:id', component: ViewRecipeComponent},
 ];
 
 @NgModule({

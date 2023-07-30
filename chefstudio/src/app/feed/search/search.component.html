@@ -19,7 +19,7 @@
                         <button 
                             class="btn" 
                             type="submit"
-                            [disabled]="!f.valid">
+                            [disabled]="!f.valid && searchQuery">
                             <fa-icon [icon]="faSearch"></fa-icon>
                         </button>
                     </span>
@@ -114,9 +114,13 @@
         <div class="row">
             <app-search-result class="col-12 col-md-4 col-lg-3 col-xl-3 mb-4 mx-auto"
             *ngFor="let recipeEl of resultArray"
-            [recipe]="recipeEl"></app-search-result>  
+            [recipe]="recipeEl" (click)="showModal()"></app-search-result>  
         </div>
     </div>
+</section>
+
+<section class="position-absolute" *ngIf="modalFlag">
+
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>

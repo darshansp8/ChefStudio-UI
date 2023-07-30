@@ -4,13 +4,12 @@
             <app-feed-navigation (selector)="onNavigate($event)"></app-feed-navigation>
         </div>
         <div class="col-12 col-lg-10 col-xl-10 p-0">
-            <app-home *ngIf="loadedSelection == 'home'"></app-home>
-            <app-search *ngIf="loadedSelection == 'search'"></app-search>
-            <app-user-profile *ngIf="loadedSelection == 'profile'"></app-user-profile>
+            <app-home *ngIf="loadedSelection === 'home'"></app-home>
+            <app-search *ngIf="loadedSelection === 'search'"></app-search>
+            <app-user-profile *ngIf="loadedSelection === 'profile'"></app-user-profile>
         </div>
         <div class="fixed-bottom p-4 col-12 d-block d-lg-none d-xl-none">
             <app-feed-navigation (selector)="onNavigate($event)"></app-feed-navigation>
         </div>
-
     </div>
 </section>

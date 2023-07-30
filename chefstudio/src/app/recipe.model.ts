@@ -1,3 +1,7 @@
+// interface RecipeBeforeLoading{
+    
+// }
+
 export interface Recipe {
     rating?: number,
     authorId: number,
