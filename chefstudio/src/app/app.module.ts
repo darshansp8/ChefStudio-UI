@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchResultComponent } from './feed/search/search-result/search-result.component';
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
+import { RecipeListComponent } from './feed/recipe/recipe-list/recipe-list.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
     FeedNavigationComponent,
     SearchResultComponent,
     ViewRecipeComponent,
-    ToStringArrayPipe
+    ToStringArrayPipe,
+    RecipeListComponent
   ],
   imports: [
     BrowserModule,

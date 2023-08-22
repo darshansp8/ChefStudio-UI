@@ -14,7 +14,7 @@ import { RecipeService } from '../../recipe.service';
 })
 export class ViewRecipeComponent implements OnInit {
 
-faBack1 = faArrowLeft
+  faBack1 = faArrowLeft
 
 
   selectedRecipe: Recipe | null;
@@ -22,7 +22,11 @@ faBack1 = faArrowLeft
 
   faBookmark = faBookmark
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private apiService: ApiServiceService) { }
+  constructor(
+    private recipeService: RecipeService, 
+    private router: Router,
+    private route: ActivatedRoute, 
+    private apiService: ApiServiceService) { }
 
   ngOnInit() {
     // this.recipeService.recipeSelected
@@ -42,26 +46,27 @@ faBack1 = faArrowLeft
         .subscribe((response: any) => {
           try {
             this.selectedRecipe = response['recipe'][0]
+            // this.selectedRecipe?.push(response['recipe'][0])
             console.log(this.selectedRecipe)
-            console.log(this.selectedRecipe?.recipeIngredients)
-            
           } catch (error) {
             console.error(error)
           }
-
         })
     }
-    console.log("Outside If")
-    if( this.selectedRecipe?.recipeIngredientsArray){
-      console.log("Inside If")
-      this.selectedRecipe.recipeInstructionsArray = this.selectedRecipe?.recipeInstructions?.split(".,");
-      console.log(this.selectedRecipe?.recipeIngredientsArray)
-    }
+
+    // console.log(this.selectedRecipe?.recipeIngredients)
+    // console.log("Ingredients",this.selectedRecipe?.recipeIngredients)
+    // console.log("Outside If")
+    // if( this.selectedRecipe?.recipeIngredientsArray){
+    //   console.log("Inside If")
+    //   this.selectedRecipe.recipeInstructionsArray = this.selectedRecipe?.recipeInstructions?.split(".,");
+    //   console.log(this.selectedRecipe?.recipeIngredientsArray)
+    // }
 
   }
 
   backToFeed() {
-
+    this.router.navigate(['feed'])
   }
 
 
