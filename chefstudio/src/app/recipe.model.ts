@@ -16,7 +16,8 @@ export interface Recipe {
     keywords?: string,
     name?: string,
     recipeInstructions?: string,
-    recipeIngredients?: string,
+    recipeIngredient?: string,
     recipeInstructionsArray?: string[],
     recipeIngredientsArray?: string[],
+    similarity?: number
 }

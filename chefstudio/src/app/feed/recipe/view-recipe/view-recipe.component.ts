@@ -42,13 +42,23 @@ export class ViewRecipeComponent implements OnInit {
 
     if (this.recipeId) {
 
-      this.apiService.getRecipeById(this.recipeId)
-        .subscribe((response: any) => {
-          try {
-            this.selectedRecipe = response['recipe'][0]
-            // this.selectedRecipe?.push(response['recipe'][0])
+      // this.apiService.getRecipeById(this.recipeId)
+      //   .subscribe((response: any) => {
+      //     try {
+      //       this.selectedRecipe = response['recipe'][0]
+      //       console.log(this.selectedRecipe)
+      //     } catch (error) {
+      //       console.error(error)
+      //     }
+      //   })
+
+      this.apiService.getRecipeByRecipeId(this.recipeId)
+        .subscribe((responseData: Recipe) => {
+          try{
+            this.selectedRecipe = responseData
             console.log(this.selectedRecipe)
-          } catch (error) {
+            console.log(this.selectedRecipe?.recipeIngredient)
+          } catch (error){
             console.error(error)
           }
         })

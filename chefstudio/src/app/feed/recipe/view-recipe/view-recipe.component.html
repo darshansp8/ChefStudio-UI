@@ -11,6 +11,17 @@
             <div class="row">
                 <div class="col-5">
                     <img [src]="selectedRecipe?.images" alt="" class="img-fluid recipe-image">
+                    <div class="row px-2">
+                        <div class="col-10">
+                            <p>Average Ratings: <span>{{selectedRecipe?.rating}}</span></p>
+                        </div>
+                        <div class="col-2 d-flex flex-column align-items-end">
+                            <a href="#"><fa-icon [classes]="['fa-solid']" [icon]="faBookmark"></fa-icon></a>
+                        </div>
+                        <div class="col-12" *ngIf="selectedRecipe?.keywords">
+                            Keywords: {{selectedRecipe?.keywords}}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-7 px-5">
                     <h1 class="mb-2 recipe-title ">{{selectedRecipe?.name}}</h1>
@@ -27,8 +38,8 @@
                         <li *ngFor="let instruction of selectedRecipe?.recipeInstructionsArray">{{instruction}}</li>
                     </ul> -->
                     <p class="mb-5 recipe-text">{{selectedRecipe?.recipeInstructions | toStringArray}}</p>
-                    <h3 class="mb-4 recipe-subtitle" *ngIf="selectedRecipe?.recipeIngredients">Ingredients</h3>
-                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeIngredients}}</p>
+                    <h3 class="mb-4 recipe-subtitle" *ngIf="selectedRecipe?.recipeIngredient">Ingredients</h3>
+                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeIngredient}}</p>
                     <!-- <h3 class="mb-4 recipe-subtitle">Category</h3> -->
                 </div>
             </div>
