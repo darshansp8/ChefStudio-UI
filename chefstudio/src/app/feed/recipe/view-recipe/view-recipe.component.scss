@@ -16,4 +16,18 @@
     & ul li{
         font-size: 1.3rem;
     }
+
+    &-keywords{
+        color: hsl(159, 55%, 25%);
+        font-size: 1.4rem;
+        // border-bottom: .1rem solid hsl(159, 55%, 25%);
+    }
+
+    &-ratings{
+        font-size: 1.4rem;
+    }
+
+    &-save{
+        font-size: 1.4rem;
+    }
 }

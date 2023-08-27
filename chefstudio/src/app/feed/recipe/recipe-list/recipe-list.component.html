@@ -1,6 +1,8 @@
 <div class="recipe" (click)="onSelected()">
     <div class="recipe-image">
-        <img [src]="recipe.images" alt="{{recipe.name}}" class="img-fluid">
+        <div *ngFor="let image of recipe.images | slice:0:1">
+            <img [src]="image || '../../../assets/no-preview-available.png'" alt="{{recipe.name}}" class="img-fluid">
+        </div>
     </div>
     <div class="recipe-body">
         <div class="row px-2">
@@ -13,6 +15,6 @@
         </div>
         <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
         <p class="recipe-description px-2">{{recipe.description}}</p>
-        <p class="recipe-similarity">Similarity: {{recipe.similarity | number : '1.2-2'}}</p>
+        <p class="recipe-similarity px-2">Similarity: {{recipe.similarity | number : '1.2-2'}}</p>
     </div>
 </div>

@@ -7,7 +7,7 @@ export interface Recipe {
     authorId: number,
     recipeId: number,
     description?: string,
-    images?: string,
+    images?: string[],
     authorName: string,
     cookTime?: string,
     prepTime?: string,

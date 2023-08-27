@@ -6,5 +6,6 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
+  keywordSelected = new EventEmitter<string>();
 
 }

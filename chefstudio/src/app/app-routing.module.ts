@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent},
   {path: 'recipe', component: ViewRecipeComponent},
   { path: 'recipe/:id', component: ViewRecipeComponent},
+  {path: 'recipe/:keyword', component: ViewRecipeComponent}
 ];
 
 @NgModule({

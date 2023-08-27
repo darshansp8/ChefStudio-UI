@@ -1,7 +1,7 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faBookmark, faClock } from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { Recipe } from 'src/app/recipe.model';
@@ -15,10 +15,12 @@ import { RecipeService } from '../../recipe.service';
 export class ViewRecipeComponent implements OnInit {
 
   faBack1 = faArrowLeft
+  faClock = faClock
 
 
   selectedRecipe: Recipe | null;
   recipeId: any;
+  recipeKeyword: any;
 
   faBookmark = faBookmark
 
@@ -39,6 +41,7 @@ export class ViewRecipeComponent implements OnInit {
       this.recipeId = _params['id']
     })
     console.log(typeof (this.recipeId), this.recipeId)
+    console.log(typeof (this.recipeKeyword), this.recipeKeyword)
 
     if (this.recipeId) {
 
@@ -78,7 +81,6 @@ export class ViewRecipeComponent implements OnInit {
   backToFeed() {
     this.router.navigate(['feed'])
   }
-
 
   // transformStringtoArray(){
   //   var instructionList = this.selectedRecipe?.recipeInstructions.split(".,");
