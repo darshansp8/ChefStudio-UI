@@ -34,12 +34,14 @@
                         <p class="mb-5 recipe-text">Total Time: {{selectedRecipe?.totalTime}}</p>
                     </div>
                     <h3 class="mb-4 recipe-subtitle">Instructions</h3>
-                    <!-- <ul>
-                        <li *ngFor="let instruction of selectedRecipe?.recipeInstructionsArray">{{instruction}}</li>
-                    </ul> -->
-                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeInstructions | toStringArray}}</p>
+                    <ul class="list-group list-group-flush mb-5">
+                        <li *ngFor="let instruction of selectedRecipe?.recipeInstructions" class="list-group-item">{{instruction}}</li>
+                    </ul>
+                    <!-- <p class="mb-5 recipe-text">{{selectedRecipe?.recipeInstructions}}</p> -->
                     <h3 class="mb-4 recipe-subtitle" *ngIf="selectedRecipe?.recipeIngredient">Ingredients</h3>
-                    <p class="mb-5 recipe-text">{{selectedRecipe?.recipeIngredient}}</p>
+                    <ul class="list-group list-group-flush mb-5">
+                        <li *ngFor="let ingredient of selectedRecipe?.recipeIngredient" class="list-group-item">{{ingredient}}</li>
+                    </ul>
                     <!-- <h3 class="mb-4 recipe-subtitle">Category</h3> -->
                 </div>
             </div>

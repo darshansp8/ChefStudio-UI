@@ -1,7 +1,6 @@
 .recipe{
     padding: 6rem;
 
-
     &-image{
         border-radius: 1rem;
     }
@@ -12,5 +11,9 @@
     &-subtitle{
         border-left: .5rem solid hsl(159, 55%, 25%);
         padding-left: .5rem;
+    }
+
+    & ul li{
+        font-size: 1.3rem;
     }
 }

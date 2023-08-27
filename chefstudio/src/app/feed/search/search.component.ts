@@ -107,6 +107,9 @@ export class SearchComponent implements OnInit {
 
           console.log(this.resultArray)
           console.log(this.resultArray.length)
+          console.log(typeof(this.resultArray[0]?.images))
+          this.resultArray.forEach((recipe: any) => JSON.parse(recipe?.images))
+          // console.log(this.resultArray[0]?.images?.at(0))
         })
     }
   }
