@@ -20,6 +20,8 @@ import { SearchResultComponent } from './feed/search/search-result/search-result
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
 import { RecipeListComponent } from './feed/recipe/recipe-list/recipe-list.component';
+import { CategoryListComponent } from './feed/category-list/category-list.component';
+import { KeywordListComponent } from './feed/keyword-list/keyword-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { RecipeListComponent } from './feed/recipe/recipe-list/recipe-list.compo
     SearchResultComponent,
     ViewRecipeComponent,
     ToStringArrayPipe,
-    RecipeListComponent
+    RecipeListComponent,
+    CategoryListComponent,
+    KeywordListComponent
   ],
   imports: [
     BrowserModule,

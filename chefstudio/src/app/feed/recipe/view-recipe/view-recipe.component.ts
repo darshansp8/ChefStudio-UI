@@ -82,6 +82,17 @@ export class ViewRecipeComponent implements OnInit {
     this.router.navigate(['feed'])
   }
 
+  onCategorySelected(category:string|undefined){
+    if (category){
+      this.router.navigate(['recipe/category', category])
+    }
+  }
+
+  onKeywordSelected(keyword:string|undefined){
+    if (keyword){
+      this.router.navigate(['recipe/keyword', keyword])
+    }
+  }
   // transformStringtoArray(){
   //   var instructionList = this.selectedRecipe?.recipeInstructions.split(".,");
   // }
