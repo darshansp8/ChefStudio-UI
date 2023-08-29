@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faBookBookmark } from '@fortawesome/free-solid-svg-icons';
+import { faBookBookmark, faDeleteLeft, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { Recipe } from 'src/app/recipe.model';
 import { RecipeService } from '../../recipe.service';
@@ -10,14 +10,27 @@ import { RecipeService } from '../../recipe.service';
   templateUrl: './recipe-list.component.html',
   styleUrls: ['./recipe-list.component.scss']
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit{
 
   faBookmark = faBookmark
   faBookmarkFilled = faBookBookmark
+  faPencil = faPen
+  faDelete = faTrash
+
+  currentRoute: string;
+  showOptions: Boolean = false;
 
   @Input() recipe: Recipe;
 
   constructor(private recipeService: RecipeService, private router: Router){}
+
+  ngOnInit(): void {
+    this.currentRoute = this.router.url;
+
+    if (this.currentRoute === '/recipe/my-recipes'){
+      this.showOptions = true;
+    }
+  }
 
   onSelected(){
     // this.recipeService.recipeSelected.emit(this.recipe);

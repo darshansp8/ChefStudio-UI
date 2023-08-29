@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddRecipeComponent } from './feed/add-recipe/add-recipe.component';
 import { CategoryListComponent } from './feed/category-list/category-list.component';
+import { EditRecipeComponent } from './feed/edit-recipe/edit-recipe.component';
 import { FeedComponent } from './feed/feed.component';
 import { KeywordListComponent } from './feed/keyword-list/keyword-list.component';
+import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './onboarding/authentication/login/login.component';
@@ -20,7 +23,12 @@ const routes: Routes = [
   {path: 'recipe', component: ViewRecipeComponent},
   {path: 'recipe/category/:category', component: CategoryListComponent},
   {path: 'recipe/keyword/:keyword', component: KeywordListComponent},
-  { path: 'recipe/:id', component: ViewRecipeComponent},
+  {path: 'recipe/add', component: AddRecipeComponent},
+  {path: 'recipe/edit/:id', component: EditRecipeComponent},
+  {path: 'recipe/my-recipes', component: MyRecipesComponent}, // Show edit and delete option for recipe card for this route
+  {path: 'recipe/:id', component: ViewRecipeComponent},
+  
+
   
 ];
 

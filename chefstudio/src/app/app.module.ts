@@ -22,6 +22,9 @@ import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
 import { RecipeListComponent } from './feed/recipe/recipe-list/recipe-list.component';
 import { CategoryListComponent } from './feed/category-list/category-list.component';
 import { KeywordListComponent } from './feed/keyword-list/keyword-list.component';
+import { AddRecipeComponent } from './feed/add-recipe/add-recipe.component';
+import { EditRecipeComponent } from './feed/edit-recipe/edit-recipe.component';
+import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { KeywordListComponent } from './feed/keyword-list/keyword-list.component
     ToStringArrayPipe,
     RecipeListComponent,
     CategoryListComponent,
-    KeywordListComponent
+    KeywordListComponent,
+    AddRecipeComponent,
+    EditRecipeComponent,
+    MyRecipesComponent
   ],
   imports: [
     BrowserModule,

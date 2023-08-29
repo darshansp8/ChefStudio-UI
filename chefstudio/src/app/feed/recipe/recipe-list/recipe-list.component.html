@@ -9,8 +9,19 @@
             <div class="col-10">
                 <p>Average Ratings <span>{{recipe.rating}}</span></p>
             </div>
-            <div class="col-2 d-flex flex-column align-items-end">
-                <a href="#"><fa-icon [classes]="['fa-solid']" [icon]="faBookmark"></fa-icon></a>
+            <div class="col-2">
+                <div class="row">
+                    <div class="col-4" *ngIf="showOptions">
+                        <a href="#"><fa-icon [icon]="faDelete"></fa-icon></a>
+                    </div>
+                    <div class="col-4" *ngIf="showOptions">
+                        <a href="#"><fa-icon [icon]="faPencil"></fa-icon></a>
+                    </div>
+                    <div class="col-4">
+                        <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
+                    </div>
+                    
+                </div>
             </div>
         </div>
         <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
