@@ -2,11 +2,16 @@
     <div class="row d-block d-lg-none">
         <div class="col-10 mx-auto bg-dark rounded">
             <div class="row p-4 justify-content-center">
-                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('home')" class="header-link text-light"><fa-icon [icon]="faHome"></fa-icon></a></div>
-                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('search')" class="header-link text-light"><fa-icon [icon]="faSearch"></fa-icon></a></div>
-                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('add')" class="header-link text-light"><fa-icon [icon]="faPlus"></fa-icon></a></div>
-                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('saved')" class="header-link text-light"><fa-icon [icon]="faSave"></fa-icon></a></div>
-                <div class="col-2 col-lg-12 p-lg-4 text-center text-light"><a (click)="onSelect('profile')" class="header-link text-light"><fa-icon [icon]="faProfile"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light">
+                    <a routerLink="/feed" class="header-link text-light"><fa-icon [icon]="faHome"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light">
+                    <a routerLink="/feed/search" class="header-link text-light"><fa-icon [icon]="faSearch"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light">
+                    <a routerLink="/recipe/add" class="header-link text-light"><fa-icon [icon]="faPlus"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light">
+                    <a routerLink="/feed/saved" class="header-link text-light"><fa-icon [icon]="faSave"></fa-icon></a></div>
+                <div class="col-2 col-lg-12 p-lg-4 text-center text-light">
+                    <a routerLink="/feed/user-profile" class="header-link text-light"><fa-icon [icon]="faProfile"></fa-icon></a></div>
             </div>
         </div>     
     </div>
@@ -17,7 +22,7 @@
             </h2>
         </div>
         <div class="col-12 text-light p-4 link-container">
-            <a (click)="onSelect('home')" class="header-link">
+            <a routerLink="/feed" class="header-link">
                 <div class="row">
                     <div class="col-2">
                         <fa-icon [icon]="faHome" class="mr-2"></fa-icon>
@@ -27,7 +32,7 @@
             </a>
         </div>
         <div class="col-12 text-light p-4 link-container">
-            <a (click)="onSelect('search')" class="header-link">
+            <a routerLink="/feed/search" class="header-link">
                 <div class="row">
                     <div class="col-2">
                         <fa-icon [icon]="faSearch"></fa-icon>
@@ -39,7 +44,7 @@
             </a>
         </div>
         <div class="col-12 text-light p-4 link-container">
-            <a (click)="onSelect('add')" class="header-link">
+            <a routerLink="/recipe/add" class="header-link">
                 <div class="row">
                     <div class="col-2">
                         <fa-icon [icon]="faPlus"></fa-icon>
@@ -51,7 +56,7 @@
             </a>
         </div>
         <div class="col-12 text-light p-4 link-container">
-            <a (click)="onSelect('saved')" class="header-link">
+            <a routerLink="/feed/saved" class="header-link">
                 <div class="row">
                     <div class="col-2">
                         <fa-icon [icon]="faSave"></fa-icon>
@@ -63,7 +68,7 @@
             </a>
         </div>
         <div class="col-12 text-light p-4 link-container">
-            <a (click)="onSelect('profile')" class="header-link">
+            <a routerLink="/feed/user-profile" class="header-link">
                 <div class="row">
                     <div class="col-2">
                         <fa-icon [icon]="faProfile"></fa-icon>

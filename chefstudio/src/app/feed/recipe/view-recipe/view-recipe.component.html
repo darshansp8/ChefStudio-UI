@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-lg-5 col-xl-5 ">
                     <div *ngFor="let image of selectedRecipe?.images | slice:0:1" class="mb-4">
-                        <img [src]="image || '../../../assets/no-preview-available.png'" alt="" class="img-fluid recipe-image">
+                        <img [src]="image || '../../../assets/no-preview-available.png'" alt="" class="img-fluid recipe-image w-100">
                     </div>
                     <div class="row px-2">
                         <div class="col-10">

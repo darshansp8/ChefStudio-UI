@@ -25,6 +25,7 @@ import { KeywordListComponent } from './feed/keyword-list/keyword-list.component
 import { AddRecipeComponent } from './feed/add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './feed/edit-recipe/edit-recipe.component';
 import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
+import { SavedComponent } from './feed/saved/saved.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
     KeywordListComponent,
     AddRecipeComponent,
     EditRecipeComponent,
-    MyRecipesComponent
+    MyRecipesComponent,
+    SavedComponent
   ],
   imports: [
     BrowserModule,

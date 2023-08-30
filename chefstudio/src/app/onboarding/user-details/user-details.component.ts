@@ -10,6 +10,7 @@ export class UserDetailsComponent {
 
   constructor(private router: Router){}
   step=1
+  totalstep = 3 
 
   preference_options = [
     {name: "Vegetarian", selected: false},
