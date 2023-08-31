@@ -10,10 +10,11 @@ export class ApiServiceService {
 
 	constructor(private http: HttpClient) { }
 
-	searchRecipeUrl = "http://127.0.0.1:5000/api/v1/search/recipes"
-	searchRecipeById = "http://127.0.0.1:5000/api/v1/search/recipeById"
-	getRecipesByUserIdUrl = "http://127.0.0.1:3000/recommend"
-	getRecipeByIdUrl = "http://127.0.0.1:3000/getrecipebyid"
+	searchRecipeUrl = "http://127.0.0.1:5000/api/v1/search/recipes";
+	searchRecipeById = "http://127.0.0.1:5000/api/v1/search/recipeById";
+	getRecipesByUserIdUrl = "http://127.0.0.1:3000/recommend";
+	getRecipeByIdUrl = "http://127.0.0.1:3000/getrecipebyid";
+	getSavedRecipeUrl = "http://127.0.0.1:3000/saved-recipe";
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
@@ -32,6 +33,10 @@ export class ApiServiceService {
 	getRecipeByRecipeId(id: number): Observable<Recipe>{
 		const queryParams = new HttpParams().append('id', id)
 		return this.http.get<Recipe>(this.getRecipeByIdUrl, {params: queryParams})
+	}
+
+	getSavedRecipe(){
+		return this.http.get<any>(this.getSavedRecipeUrl)
 	}
 
 }
