@@ -1,0 +1,12 @@
+.review{
+    font-size: 1.2rem;
+
+    &-bold{
+        font-weight: 600;
+    }
+}
+
+.custom-list-item{
+    border: none;
+    border-bottom: .1rem solid #aaa;  
+}

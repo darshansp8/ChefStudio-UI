@@ -15,7 +15,7 @@ export interface Recipe {
     category?: string,
     keywords?: string,
     name?: string,
-    recipeInstructions?: string,
+    recipeInstructions?: string[],
     recipeIngredient?: string,
     recipeInstructionsArray?: string[],
     recipeIngredientsArray?: string[],

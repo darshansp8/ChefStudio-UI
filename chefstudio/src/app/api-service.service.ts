@@ -15,6 +15,7 @@ export class ApiServiceService {
 	getRecipesByUserIdUrl = "http://127.0.0.1:3000/recommend";
 	getRecipeByIdUrl = "http://127.0.0.1:3000/getrecipebyid";
 	getSavedRecipeUrl = "http://127.0.0.1:3000/saved-recipe";
+	getReviewsByRecipeIdUrl = "http://127.0.0.1:3000/get-reviews/"
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
@@ -37,6 +38,11 @@ export class ApiServiceService {
 
 	getSavedRecipe(){
 		return this.http.get<any>(this.getSavedRecipeUrl)
+	}
+
+	getReviews(id: number|string){
+		// const queryParams = new HttpParams().append('id', id)
+		return this.http.get<any>(this.getReviewsByRecipeIdUrl+id)
 	}
 
 }

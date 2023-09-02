@@ -1,8 +1,8 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faBookmark, faClock } from '@fortawesome/free-regular-svg-icons';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faClock, faStar as faStarRegular} from '@fortawesome/free-regular-svg-icons';
+import { faArrowLeft, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { Recipe } from 'src/app/recipe.model';
 import { RecipeService } from '../../recipe.service';
@@ -16,11 +16,15 @@ export class ViewRecipeComponent implements OnInit {
 
   faBack1 = faArrowLeft
   faClock = faClock
+  faStarRegular = faStarRegular
+  faStarSolid = faStarSolid
 
 
   selectedRecipe: Recipe | null;
   recipeId: any;
   recipeKeyword: any;
+  allReviews: any[] = [];
+  averageRating: number;
 
   faBookmark = faBookmark
 
@@ -62,6 +66,16 @@ export class ViewRecipeComponent implements OnInit {
             console.log(this.selectedRecipe)
             console.log(this.selectedRecipe?.recipeIngredient)
           } catch (error){
+            console.error(error)
+          }
+        })
+
+      this.apiService.getReviews(this.recipeId)
+        .subscribe(reviewsData => {
+          try{
+            this.allReviews = reviewsData.reviews
+            this.averageRating = reviewsData.average_rating
+          } catch(error){
             console.error(error)
           }
         })

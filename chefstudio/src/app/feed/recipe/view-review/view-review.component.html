@@ -1,0 +1,9 @@
+<li class="list-group-item custom-list-item row my-2">
+    <div class="col-12 d-flex justify-content-between align-items-end"> 
+        <p class="review review-bold">{{review?.AuthorName}}</p>
+        <p class="review review-bold"><fa-icon class="recipe-save text-primary" [icon]="faStar"></fa-icon> {{review?.Rating}}</p>
+    </div>
+    <div class="col-12">
+        <p class="review">{{review?.Review}}</p>
+    </div>
+</li>

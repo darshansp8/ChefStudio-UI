@@ -15,7 +15,7 @@ import { SearchComponent } from './feed/search/search.component';
 import { UserProfileComponent } from './feed/user-profile/user-profile.component';
 import { FeedNavigationComponent } from './feed/feed-navigation/feed-navigation.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchResultComponent } from './feed/search/search-result/search-result.component';
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 import { ToStringArrayPipe } from './pipes/to-string-array.pipe';
@@ -26,6 +26,7 @@ import { AddRecipeComponent } from './feed/add-recipe/add-recipe.component';
 import { EditRecipeComponent } from './feed/edit-recipe/edit-recipe.component';
 import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 import { SavedComponent } from './feed/saved/saved.component';
+import { ViewReviewComponent } from './feed/recipe/view-review/view-review.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SavedComponent } from './feed/saved/saved.component';
     AddRecipeComponent,
     EditRecipeComponent,
     MyRecipesComponent,
-    SavedComponent
+    SavedComponent,
+    ViewReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { SavedComponent } from './feed/saved/saved.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
