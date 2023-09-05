@@ -7,7 +7,7 @@
     <div class="recipe-body">
         <div class="row px-2">
             <div class="col-10">
-                <p>Average Ratings <span>{{recipe.rating}}</span></p>
+                <p *ngIf="recipe.rating">Average Ratings <span>{{recipe.rating}}</span></p>
             </div>
             <div class="col-2">
                 <div class="row d-flex justify-content-end align-items-center">
@@ -26,6 +26,6 @@
         </div>
         <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
         <p class="recipe-description px-2">{{recipe.description}}</p>
-        <p class="recipe-similarity px-2">Similarity: {{recipe.similarity | number : '1.2-2'}}</p>
+        <p class="recipe-similarity px-2" *ngIf="recipe.similarity">Similarity: {{recipe.similarity | number : '1.0-0'}}%</p>
     </div>
 </div>

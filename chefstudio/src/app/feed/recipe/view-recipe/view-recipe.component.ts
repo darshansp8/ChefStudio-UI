@@ -25,6 +25,8 @@ export class ViewRecipeComponent implements OnInit {
   recipeKeyword: any;
   allReviews: any[] = [];
   averageRating: number;
+  reviewsLength = 0;
+  saveRecipe: Boolean;
 
   faBookmark = faBookmark
 
@@ -73,8 +75,9 @@ export class ViewRecipeComponent implements OnInit {
       this.apiService.getReviews(this.recipeId)
         .subscribe(reviewsData => {
           try{
-            this.allReviews = reviewsData.reviews
-            this.averageRating = reviewsData.average_rating
+            this.allReviews = reviewsData?.reviews
+            this.reviewsLength = reviewsData?.reviews?.length
+            this.averageRating = reviewsData?.average_rating
           } catch(error){
             console.error(error)
           }
@@ -111,4 +114,12 @@ export class ViewRecipeComponent implements OnInit {
   //   var instructionList = this.selectedRecipe?.recipeInstructions.split(".,");
   // }
 
+  toggleSave(){
+    this.saveRecipe = !this.saveRecipe;
+    console.log(this.saveRecipe)
+    this.apiService.saveRecipe(this.recipeId, this.saveRecipe)
+    .subscribe(responseData => {
+      console.log(responseData)
+    })
+  }
 }

@@ -36,8 +36,6 @@ const routes: Routes = [
   {path: 'recipe/my-recipes', component: MyRecipesComponent}, // Show edit and delete option for recipe card for this route
   {path: 'recipe/:id', component: ViewRecipeComponent},
   {path: 'recipe', component: ViewRecipeComponent},
-
-  
 ];
 
 @NgModule({

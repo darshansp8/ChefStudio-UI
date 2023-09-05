@@ -24,24 +24,24 @@ export class SearchComponent implements OnInit {
   resultArray: Recipe[] = []
 
   diet_preferences = [
-    "vegan",
-    "vegetarian",
-    "non-vegetarian",
+    "Vegan",
+    "Vegetable",
+    "Chicken"
   ]
 
   cooking_time = [
-    "< 15M",
-    "< 30M",
-    "< 60M",
-    "< 4H",
+    "< 15 Mins",
+    "< 30 Mins",
+    "< 60 Mins",
+    "< 4 Hours",
   ]
 
   cooking_style = [
-    "boiled",
-    "pressure cooker",
-    "microwave",
-    "roasting",
-    "deep fry"
+    "Pressure Cooker",
+    "Microwave",
+    "Deep Fried",
+    "No Cook",
+    "Baking"
   ]
 
   countries = [

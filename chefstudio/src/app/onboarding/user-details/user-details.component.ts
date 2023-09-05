@@ -11,6 +11,7 @@ export class UserDetailsComponent {
   constructor(private router: Router){}
   step=1
   totalstep = 3 
+  category_preferences: string[] = []
 
   preference_options = [
     {name: "Vegetarian", selected: false},
@@ -46,21 +47,46 @@ export class UserDetailsComponent {
   }
 
   showOptions(){
-    for (var option of this.preference_options){
-      if(option.selected){
-        console.log(option.name)
-      }
+    switch (this.step) {
+      case 1:
+        for (var option of this.preference_options){
+          if(option.selected){
+            console.log(option.name)
+            this.category_preferences.push(option.name)
+          }
+        }
+        break;
+      case 2:
+        for (var option of this.category_options){
+          if(option.selected){
+            console.log(option.name)
+            this.category_preferences.push(option.name)
+          }
+        }
+        break;
+      case 3:
+        for (var option of this.cooktime_options){
+          if(option.selected){
+            console.log(option.name)
+            this.category_preferences.push(option.name)
+          }
+        }
+        break;
+      default:
+        break;
     }
-    for (var option of this.category_options){
-      if(option.selected){
-        console.log(option.name)
-      }
+    if (this.step == this.totalstep){
+      this.saveDetails()
     }
-    this.step += 1;
+    else{
+      this.step += 1;
+    }
+    
   }
 
   saveDetails(){
     console.log("Done");
+    console.log(this.category_preferences)
     this.router.navigate(['/feed'])
   }
 }

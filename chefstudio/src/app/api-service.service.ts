@@ -15,7 +15,10 @@ export class ApiServiceService {
 	getRecipesByUserIdUrl = "http://127.0.0.1:3000/recommend";
 	getRecipeByIdUrl = "http://127.0.0.1:3000/getrecipebyid";
 	getSavedRecipeUrl = "http://127.0.0.1:3000/saved-recipe";
-	getReviewsByRecipeIdUrl = "http://127.0.0.1:3000/get-reviews/"
+	getReviewsByRecipeIdUrl = "http://127.0.0.1:3000/get-reviews/";
+	getRecipesByCategoryUrl = "http://127.0.0.1:3000/getrecipesbycategory/";
+	getRecipesByKeywordUrl = "http://127.0.0.1:3000/getrecipesbykeyword/";
+	saveRecipeUrl = "http://127.0.0.1:3000/save-recipe";
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
@@ -43,6 +46,19 @@ export class ApiServiceService {
 	getReviews(id: number|string){
 		// const queryParams = new HttpParams().append('id', id)
 		return this.http.get<any>(this.getReviewsByRecipeIdUrl+id)
+	}
+
+	getRecipesByCategory(category: string){
+		return this.http.get<any>(this.getRecipesByCategoryUrl+category)
+	}
+
+	getRecipesByKeyword(keyword: string){
+		return this.http.get<any>(this.getRecipesByKeywordUrl+keyword)
+	}
+
+	saveRecipe(recipeId: number, saveFlag: any){
+		const params = new HttpParams().set('RecipeId', recipeId).set('save', saveFlag)
+		return this.http.get<any>(this.saveRecipeUrl, {params: params})
 	}
 
 }
