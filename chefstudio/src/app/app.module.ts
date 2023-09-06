@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { EditRecipeComponent } from './feed/edit-recipe/edit-recipe.component';
 import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 import { SavedComponent } from './feed/saved/saved.component';
 import { ViewReviewComponent } from './feed/recipe/view-review/view-review.component';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,13 @@ import { ViewReviewComponent } from './feed/recipe/view-review/view-review.compo
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

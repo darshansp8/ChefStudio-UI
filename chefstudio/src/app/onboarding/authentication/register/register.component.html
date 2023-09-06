@@ -14,18 +14,64 @@
                 <h2 class="col-12 text-center text-primary login-subtitle">Create an account</h2>
                 <p class="col-12 text-center register-para">Let's get started by creating a free account</p>
                 <div class="form-container col-12 col-sm-12 col-md-8 col-lg-12 col-xl-8 mx-auto">
-                    <form action="#" class="col-10 mx-auto">
+                    <form 
+                        novalidate
+                        class="col-10 mx-auto"
+                        (ngSubmit)="onSubmit()"
+                        [formGroup]="registerForm">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control form-control-lg" aria-describedby="nameHelp" placeholder="John Doe">
+                            <input 
+                                type="text" 
+                                id="name" 
+                                class="form-control form-control-lg" 
+                                aria-describedby="nameHelp" 
+                                placeholder="John Doe"
+                                formControlName="name">
+                            <span 
+                            *ngIf="!registerForm.get('name')?.valid && registerForm.get('name')?.touched"
+                            class="text-danger">
+                                Please provide a valid name.
+                        </span>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control form-control-lg" aria-describedby="emailHelp" placeholder="johndoe@example.com">
+                            <input 
+                                type="email" 
+                                id="email" 
+                                class="form-control form-control-lg" 
+                                aria-describedby="emailHelp" 
+                                placeholder="johndoe@example.com"
+                                formControlName="email">
+                            <span 
+                                *ngIf="!registerForm.get('email')?.valid && registerForm.get('email')?.touched"
+                                class="text-danger">Please provide a valid email.</span>
+                            <span
+                                *ngIf="emailExists"
+                                class="text-danger">
+                                Email already exists
+                            </span>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" class="form-control form-control-lg" aria-describedby="passwordHelp" placeholder="********">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                class="form-control form-control-lg" 
+                                aria-describedby="passwordHelp" 
+                                placeholder="********"
+                                formControlName="password">
+                                <span 
+                                *ngIf="!registerForm.get('password')?.valid && registerForm.get('password')?.touched"
+                                class="text-danger">
+                                <span *ngIf="registerForm.get('password')?.errors">
+                                    Please provide a valid password.
+                                </span>
+                                <span *ngIf="registerForm.get('password')?.errors">
+                                    Password must be at least 8 characters.
+                                </span>
+                                
+                            </span> 
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -38,14 +84,15 @@
                         <div class="form-group">
                             <div class="col-12">
                                 <button 
-                                    routerLink="/user-details"
-                                    class="btn btn-primary col-12 mb-2 form-primaryaction">Sign In</button>
+                                    type="submit"
+                                    class="btn btn-primary col-12 mb-2 form-primaryaction"
+                                    [disabled]="!registerForm.valid">Sign In</button>
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <button 
                                     routerLink="/user-details"
                                     class="btn btn-outline-primary col-12 form-secondaryaction">Sign In with Google</button>
-                            </div>
+                            </div> -->
                         </div>
                     </form>
                     <p class="text-center ">Already have an account? <a routerLink="/login">Sign In</a></p>

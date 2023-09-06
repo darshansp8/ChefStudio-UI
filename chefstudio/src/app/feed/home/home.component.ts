@@ -10,16 +10,29 @@ import { Recipe } from 'src/app/recipe.model';
 })
 export class HomeComponent implements OnInit{
   faBookmark = faBookmark
-
+  onboarding: number;
+  selectUserPreferences = false;
   resultArray: Recipe[] = []
 
   constructor(private apiService: ApiServiceService){}
 
   ngOnInit(): void {
-    this.apiService.getRecipesByUserId()
-    .subscribe((responseData)=> {
-      console.log(responseData)
-      this.resultArray = responseData
-    })
+    const onboard = this.apiService.getOnboardingStatus()
+    console.log(onboard)
+    this.onboarding = Number(this.apiService.getOnboardingStatus())
+    console.log(this.onboarding)
+    if (this.onboarding == 1){
+      this.apiService.getRecipesByUserId()
+      .subscribe((responseData)=> {
+        console.log(responseData)
+        this.resultArray = responseData
+        if (this.resultArray.length == 0){
+          this.selectUserPreferences = true;
+        }
+      })
+    }
+    else{
+      this.selectUserPreferences = true
+    }
   }
 }

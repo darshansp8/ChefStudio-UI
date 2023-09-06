@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiServiceService } from 'src/app/api-service.service';
 
 @Component({
   selector: 'app-user-details',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserDetailsComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private apiService: ApiServiceService){}
   step=1
   totalstep = 3 
   category_preferences: string[] = []
@@ -87,6 +88,7 @@ export class UserDetailsComponent {
   saveDetails(){
     console.log("Done");
     console.log(this.category_preferences)
+    // localStorage.setItem('onboarding', true)
     this.router.navigate(['/feed'])
   }
 }
