@@ -1,1 +1,157 @@
-<p>edit-recipe works!</p>
+<div class="container recipe-form">
+    <div class="row">
+        <h2 class="mb-5">
+            <a (click)="backToFeed()" class="text-center back-icon">
+                <fa-icon [icon]="faBack1"></fa-icon>
+            </a>
+        </h2>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form 
+                novalidate
+                class="row"
+                [formGroup] = "editRecipeForm"
+                (ngSubmit)="onSubmit()" 
+                id="add_recipe_form">
+                <div class="col-12 col-lg-5 col-xl-5 ">
+                    <!-- <div *ngFor="let image of selectedRecipe?.images | slice:0:1" class="mb-4">
+                        <img [src]="image || '../../../assets/no-preview-available.png'" alt="" class="img-fluid recipe-image w-100">
+                    </div> -->
+                    <div class="row px-2">
+                        <!-- <div class="col-10">
+                            <p class="recipe-ratings">Average Ratings: <span>{{selectedRecipe?.rating || '0'}}</span></p>
+                        </div> -->
+                        <!-- <div class="col-2 d-flex flex-column align-items-end">
+                            <a href="#"><fa-icon class="recipe-save" [icon]="faBookmark"></fa-icon></a>
+                        </div> -->
+                        <!-- <div class="col-12" *ngIf="selectedRecipe?.keywords">
+                            Keywords: {{selectedRecipe?.keywords}}
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7 col-xl-7 px-3 px-md-5 px-lg-5 px-xl-5">
+                    <!-- <h1 class="mb-2 recipe-title ">{{selectedRecipe?.name}}</h1> -->
+                    <div class="form-group mb-3">
+                        <label for="Name">Title</label>
+                        <input type="text" id="Name" name="Name" class="form-control form-control-lg" placeholder="Title" formControlName="Name"/>
+                    </div>
+                    <!-- <h4 class="mb-4"
+                    (click)="onCategorySelected(selectedRecipe?.category)">{{selectedRecipe?.category}}</h4> -->
+                    <div class="form-group mb-3">
+                        <label for="Category">Category</label>
+                        <input type="text" id="Category" name="RecipeCategory" class="form-control form-control-lg" placeholder="Category" formControlName="RecipeCategory"/>
+                    </div>
+                    <!-- <p class="recipe-text mb-3">{{selectedRecipe?.description}}</p> -->
+                    <div class="form-group mb-3">
+                        <label for="Description">Description</label>
+                        <textarea id="Description" name="Description" class="form-control form-control-lg" placeholder="Description" formControlName="Description"></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="CookTime">
+                            <p class="mb-2 recipe-text">
+                                <fa-icon [icon]="faClock"></fa-icon>&nbsp;Cook Time:
+                            </p>
+                        </label>
+                        <input type="time" id="CookTime" name="CookTime" class="form-control form-control-lg" formControlName="CookTime"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="PrepTime">
+                            <p class="mb-2 recipe-text">
+                                <fa-icon [icon]="faClock"></fa-icon>&nbsp;Prep Time:
+                            </p>
+                        </label>
+                        <input type="time" id="PrepTime" name="PrepTime" class="form-control form-control-lg" formControlName="PrepTime"/>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="TotalTime">
+                            <p class="mb-2 recipe-text">
+                                <fa-icon [icon]="faClock"></fa-icon>&nbsp;Total Time:
+                            </p>
+                        </label>
+                        <input type="time" id="TotalTime" name="TotalTime" class="form-control form-control-lg" formControlName="TotalTime"/>
+                    </div>
+                        
+                    <div class="form-group mb-3">
+                        <!-- <h3 class="mb-4 recipe-subtitle">Instructions</h3> -->
+                        <label for="Instructions">Instructions</label>
+                        <ul class="list-group list-group-flush" id="Instructions" formArrayName="recipeInstructions">
+                            <li *ngFor="let instruction of instructions.controls; let i = index" class="list-group-item px-0 mb-1 col-12">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="instruction-{{i}}" name="instruction-{{i}}" class="form-control form-control-lg" placeholder="Instruction {{i+1}}" formControlName="instruction"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addInstructionAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeInstruction(i)'>-</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button *ngIf="this.instructions.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewInstruction()'>Add Instruction</button>
+    
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Ingredients">Ingredients</label>
+                        <ul class="list-group list-group-flush" id="Ingredients" formArrayName="recipeIngredients">
+                            <li *ngFor="let ingredient of ingredients.controls; let i = index" class="list-group-item px-0 mb-1">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="ingredient-{{i}}" name="ingredient-{{i}}" class="form-control form-control-lg" placeholder="Ingredient {{i+1}}" formControlName="ingredient"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addIngredientAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeIngredient(i)'>-</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button *ngIf="this.ingredients.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewIngredient()'>Add Ingredient</button>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Keywords">Keywords</label>
+                        <ul class="list-group list-group-flush" id="Keywords" formArrayName="recipeKeywords">
+                            <li *ngFor="let keyword of keywords.controls; let i = index" class="list-group-item px-0 mb-1">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="keyword-{{i}}" name="keyword-{{i}}" class="form-control form-control-lg" placeholder="Keyword {{i+1}}" formControlName="keyword"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addKeywordAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeKeyword(i)'>-</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button *ngIf="this.keywords.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewKeyword()'>Add Keyword</button>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-6 mt-2">
+                            <button 
+                                type="reset"
+                                class="btn btn-outline-primary col-12 form-secondaryaction py-3">Cancel</button>
+                        </div>
+                        <div class="col-6 mt-2">
+                            <button 
+                                type="submit"
+                                [disabled]="!this.editRecipeForm.valid"
+                                class="btn btn-primary col-12 mb-2 form-primaryaction py-3">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- <h1>{{selectedRecipe?.authorId}}</h1> -->
+        </div>
+    </div>
+</div>
+<!-- <h1 *ngIf="!recipeId">No such recipe found</h1> -->

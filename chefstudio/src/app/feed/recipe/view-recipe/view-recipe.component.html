@@ -10,12 +10,19 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-12 col-lg-5 col-xl-5 ">
-                    <div *ngFor="let image of selectedRecipe?.images | slice:0:1" class="mb-4">
-                        <img [src]="image || '../../../assets/no-preview-available.png'" alt="" class="img-fluid recipe-image w-100">
+                    <div class="recipe-image">
+                        <div *ngIf="selectedRecipe?.images?.length == 0">
+                            <img [src]="'../../../assets/no-preview-available.png'" alt="{{selectedRecipe?.name}}" class="img-fluid w-100">
+                        </div>
+                        <div *ngIf="selectedRecipe?.images?.length != 0">
+                            <div *ngFor="let image of selectedRecipe?.images | slice:0:1">
+                                <img [src]="image || '../../../assets/no-preview-available.png'" alt="{{selectedRecipe?.name}}" class="img-fluid w-100">
+                            </div>
+                        </div>
                     </div>
                     <div class="row px-2">
                         <div class="col-10">
-                            <p class="recipe-ratings">Average Ratings: <span>{{selectedRecipe?.rating || '0'}}</span></p>
+                            <p class="recipe-ratings">Average Ratings: <span>{{this.averageRating || '0'}}</span></p>
                         </div>
                         <div class="col-2 d-flex flex-column align-items-end">
                             <a (click)="toggleSave()">
@@ -35,31 +42,20 @@
                         </div> -->
                     </div>
                     <div class="row d-none d-lg-block d-xl-block">
-                        <form novalidate class="mb-3 col-12">
+                        <form 
+                            novalidate 
+                            class="mb-3"
+                            (ngSubmit)="onSubmit()"
+                            [formGroup]="reviewForm">
                             <div class="form-group mb-3">
                                 <label for="rating" class="mb-3">Rate the recipe</label>
-                                <input type="email" id="rating" class="form-control form-control-lg" placeholder="Write your review...(optional)">
-                                <ul class="list-group">
-                                    <li class="list-group muted">
-                                        <fa-icon class="recipe-save" [icon]="faStarRegular"></fa-icon>
-                                    </li>
-                                    <li class="list-group muted">
-                                        <fa-icon class="recipe-save" [icon]="faStarRegular"></fa-icon>
-                                    </li>
-                                    <li class="list-group muted">
-                                        <fa-icon class="recipe-save" [icon]="faStarRegular"></fa-icon>
-                                    </li>
-                                    <li class="list-group muted">
-                                        <fa-icon class="recipe-save" [icon]="faStarRegular"></fa-icon>
-                                    </li>
-                                    <li class="list-group muted">
-                                        <fa-icon class="recipe-save" [icon]="faStarRegular"></fa-icon>
-                                    </li>
-                                </ul>
+                                <input type="number" id="rating" class="form-control form-control-lg" placeholder="Rate the recipe between 1 to 5" min="1" max="5" formControlName="Rating">
                             </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-primary py-3 col-6">Submit</button>    
+                            <div class="form-group mb-3">
+                                <label for="review" class="mb-3">Write your review</label>
+                                <input type="text" id="review" class="form-control form-control-lg" placeholder="(optional)" formControlName="Review">
                             </div>
+                            <button type="submit" class="btn btn-primary py-3" [disabled]="!this.reviewForm.valid">Submit</button>
                         </form>
                         <h3 class="mb-4 recipe-subtitle">Reviews ({{this.reviewsLength || 0}})</h3>
                         <ul class="list-group list-group-flush">
@@ -99,12 +95,20 @@
                     </div>
                     <h4 class="recipe-author mb-3">Recipe By: {{selectedRecipe?.authorName}}</h4>
                     <div class="row d-block d-sm-block d-md-block d-lg-none d-xl-none">
-                        <form novalidate>
+                        <form 
+                            novalidate 
+                            class="mb-3"
+                            (ngSubmit)="onSubmit()"
+                            [formGroup]="reviewForm">
                             <div class="form-group mb-3">
                                 <label for="rating" class="mb-3">Rate the recipe</label>
-                                <input type="email" id="rating" class="form-control form-control-lg" placeholder="Write your review...(optional)">
+                                <input type="number" id="rating" class="form-control form-control-lg" placeholder="Rate the recipe between 1 to 5" min="1" max="5" formControlName="Rating">
                             </div>
-                            <button type="button" class="btn btn-primary py-3">Submit</button>
+                            <div class="form-group mb-3">
+                                <label for="review" class="mb-3">Write your review</label>
+                                <input type="text" id="review" class="form-control form-control-lg" placeholder="(optional)" formControlName="Review">
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3" [disabled]="!this.reviewForm.valid">Submit</button>
                         </form>
                         <h3 class="mb-4 recipe-subtitle">Reviews ({{this.reviewsLength || 0}})</h3>
                         <!-- <ul class="list-group list-group-flush">

@@ -23,6 +23,23 @@ export class ApiServiceService {
 	registerUrl = "http://127.0.0.1:3000/user/register";
 	loginUrl = "http://127.0.0.1:3000/user/login";
 	updateUserUrl = "http://127.0.0.1:3000/user/update-user";
+	addRecipeUrl = "http://127.0.0.1:3000/add-recipe";
+	editRecipeUrl ="http://127.0.0.1:3000/edit-recipe/";
+	deleteRecipeUrl = "http://127.0.0.1:3000/delete-recipe/";
+	getUserUrl = "http://127.0.0.1:3000/user/get-user";
+	addReviewUrl = "http://127.0.0.1:3000/add-review";
+
+	addRecipe(recipe: any){
+		return this.http.post<any>(this.addRecipeUrl, recipe)
+	}
+
+	editRecipe(recipeId: any, recipeData: any){
+		return this.http.patch<any>(this.editRecipeUrl+recipeId, recipeData)
+	}
+
+	deleteRecipe(recipeId: any){
+		return this.http.delete<any>(this.deleteRecipeUrl+recipeId)
+	}
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
@@ -71,6 +88,14 @@ export class ApiServiceService {
 
 	updateUserPreferences(userPreferences: string[]){
 		return this.http.patch<any>(this.updateUserUrl, {"user_preferences": userPreferences})
+	}
+
+	getUserProfile(){
+		return this.http.get<any>(this.getUserUrl)
+	}
+
+	addReview(reviewData: any){
+		return this.http.post<any>(this.addReviewUrl, reviewData)
 	}
 
 	register(user: any){

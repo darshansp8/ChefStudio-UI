@@ -1,5 +1,6 @@
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faBookmark, faClock, faStar as faStarRegular} from '@fortawesome/free-regular-svg-icons';
 import { faArrowLeft, faBookBookmark, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
@@ -29,11 +30,13 @@ export class ViewRecipeComponent implements OnInit {
   reviewsLength = 0;
   isSaved: Boolean | undefined;
 
+  reviewForm: FormGroup;
 
   constructor(
     private recipeService: RecipeService, 
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private _fb: FormBuilder, 
     private apiService: ApiServiceService) { }
 
   ngOnInit() {
@@ -43,6 +46,12 @@ export class ViewRecipeComponent implements OnInit {
     //   console.log("Inside view recipe")
     //   console.log(this.selectedRecipe)
     // })
+
+    this.reviewForm = this._fb.group({
+      'Rating': [0, [Validators.required]],
+      'Review': '',
+    })
+
     this.route.params.subscribe(_params => {
       this.recipeId = _params['id']
     })
@@ -72,17 +81,9 @@ export class ViewRecipeComponent implements OnInit {
             console.error(error)
           }
         })
-
-      this.apiService.getReviews(this.recipeId)
-        .subscribe(reviewsData => {
-          try{
-            this.allReviews = reviewsData?.reviews
-            this.reviewsLength = reviewsData?.reviews?.length
-            this.averageRating = reviewsData?.average_rating
-          } catch(error){
-            console.error(error)
-          }
-        })
+        
+        this.fetchReviews();
+  
     }
 
     // console.log(this.selectedRecipe?.recipeIngredients)
@@ -94,6 +95,19 @@ export class ViewRecipeComponent implements OnInit {
     //   console.log(this.selectedRecipe?.recipeIngredientsArray)
     // }
 
+  }
+
+  fetchReviews(){
+    this.apiService.getReviews(this.recipeId)
+        .subscribe(reviewsData => {
+          try{
+            this.allReviews = reviewsData?.reviews
+            this.reviewsLength = reviewsData?.reviews?.length
+            this.averageRating = reviewsData?.average_rating
+          } catch(error){
+            console.error(error)
+          }
+        })
   }
 
   backToFeed() {
@@ -127,5 +141,15 @@ export class ViewRecipeComponent implements OnInit {
       console.log(error)
     }
   })
+  }
+
+  onSubmit(){ 
+    console.log(this.reviewForm.value)
+    this.apiService.addReview({...this.reviewForm.value, 'RecipeId': this.recipeId})
+    .subscribe(responseData => {
+      console.log(responseData)
+      this.fetchReviews();
+    })
+
   }
 }

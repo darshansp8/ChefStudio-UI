@@ -15,9 +15,9 @@
                 (ngSubmit)="onSubmit()" 
                 id="add_recipe_form">
                 <div class="col-12 col-lg-5 col-xl-5 ">
-                    <div *ngFor="let image of selectedRecipe?.images | slice:0:1" class="mb-4">
+                    <!-- <div *ngFor="let image of selectedRecipe?.images | slice:0:1" class="mb-4">
                         <img [src]="image || '../../../assets/no-preview-available.png'" alt="" class="img-fluid recipe-image w-100">
-                    </div>
+                    </div> -->
                     <div class="row px-2">
                         <!-- <div class="col-10">
                             <p class="recipe-ratings">Average Ratings: <span>{{selectedRecipe?.rating || '0'}}</span></p>
@@ -64,43 +64,75 @@
                         <input type="time" id="PrepTime" name="PrepTime" class="form-control form-control-lg" formControlName="PrepTime"/>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="CookTime">
+                        <label for="TotalTime">
                             <p class="mb-2 recipe-text">
                                 <fa-icon [icon]="faClock"></fa-icon>&nbsp;Total Time:
                             </p>
                         </label>
-                        <input type="time" id="TotalTime" name="TotalTime" class="form-control form-control-lg" formmControlName="TotalTime"/>
+                        <input type="time" id="TotalTime" name="TotalTime" class="form-control form-control-lg" formControlName="TotalTime"/>
                     </div>
                         
                     <div class="form-group mb-3">
                         <!-- <h3 class="mb-4 recipe-subtitle">Instructions</h3> -->
                         <label for="Instructions">Instructions</label>
                         <ul class="list-group list-group-flush" id="Instructions" formArrayName="recipeInstructions">
-                            <li *ngFor="let instruction of instructions.controls; let i = index" class="list-group-item px-0 mb-1">
-                                <input type="text" id="instruction-{{i}}" name="instruction-{{i}}" class="form-control form-control-lg" placeholder="Instruction {{i+1}}" formControlName="instruction"/>
+                            <li *ngFor="let instruction of instructions.controls; let i = index" class="list-group-item px-0 mb-1 col-12">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="instruction-{{i}}" name="instruction-{{i}}" class="form-control form-control-lg" placeholder="Instruction {{i+1}}" formControlName="instruction"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addInstructionAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeInstruction(i)'>-</button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                        <button class="btn btn-outline-primary col-12 py-3" type="button" (click)='addNewInstruction()'>Add Next Instruction</button>
+                        <button *ngIf="this.instructions.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewInstruction()'>Add Instruction</button>
+    
                     </div>
                     <div class="form-group mb-3">
-                        <!-- <h3 class="mb-4 recipe-subtitle">Instructions</h3> -->
                         <label for="Ingredients">Ingredients</label>
-                        <ul class="list-group list-group-flush" id="Ingredients">
-                            <li *ngFor="let ingredient of recipeIngredients; let i = index" class="list-group-item px-0 mb-1">
-                                <input type="text" id="ingredient-{{i}}" name="ingredient-{{i}}" class="form-control form-control-lg" placeholder="Ingredient {{i+1}}"/>
+                        <ul class="list-group list-group-flush" id="Ingredients" formArrayName="recipeIngredients">
+                            <li *ngFor="let ingredient of ingredients.controls; let i = index" class="list-group-item px-0 mb-1">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="ingredient-{{i}}" name="ingredient-{{i}}" class="form-control form-control-lg" placeholder="Ingredient {{i+1}}" formControlName="ingredient"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addIngredientAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeIngredient(i)'>-</button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                        <button class="btn btn-outline-primary col-12 py-3" type="button" (click)='addNewIngredient()'>Add Next Ingredient</button>
+                        <button *ngIf="this.ingredients.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewIngredient()'>Add Ingredient</button>
                     </div>
                     <div class="form-group mb-3">
-                        <!-- <h3 class="mb-4 recipe-subtitle">Instructions</h3> -->
                         <label for="Keywords">Keywords</label>
-                        <ul class="list-group list-group-flush" id="Keywords">
-                            <li *ngFor="let keyword of recipeKeywords; let i = index" class="list-group-item px-0 mb-1">
-                                <input type="text" id="keyword-{{i}}" name="keyword-{{i}}" class="form-control form-control-lg" placeholder="Keyword {{i+1}}"/>
+                        <ul class="list-group list-group-flush" id="Keywords" formArrayName="recipeKeywords">
+                            <li *ngFor="let keyword of keywords.controls; let i = index" class="list-group-item px-0 mb-1">
+                                <div class="row align-items-center" [formGroupName]="i">
+                                    <div class="col-1">{{i+1}}</div>
+                                    <div class="col-9">
+                                        <input type="text" id="keyword-{{i}}" name="keyword-{{i}}" class="form-control form-control-lg" placeholder="Keyword {{i+1}}" formControlName="keyword"/>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='addKeywordAfter(i)'>+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-primary py-2" type="button" (click)='removeKeyword(i)'>-</button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
-                        <button class="btn btn-outline-primary col-12 py-3" type="button" (click)='addNewKeyword()'>Add Next Keyword</button>
+                        <button *ngIf="this.keywords.length == 0" class="btn btn-outline-primary col-6 py-3" type="button" (click)='addNewKeyword()'>Add Keyword</button>
                     </div>
 
                     <div class="row form-group">
@@ -112,6 +144,7 @@
                         <div class="col-6 mt-2">
                             <button 
                                 type="submit"
+                                [disabled]="!this.addRecipeForm.valid"
                                 class="btn btn-primary col-12 mb-2 form-primaryaction py-3">Submit</button>
                         </div>
                     </div>

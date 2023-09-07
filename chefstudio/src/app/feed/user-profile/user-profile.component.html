@@ -1,1 +1,8 @@
-<p>user-profile works!</p>
+<section class="user-profile">
+    <h1>Hi, {{user?.name}}</h1>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a routerLink="/feed/saved">Saved Recipes</a></li>
+        <li class="list-group-item"><a routerLink="/recipe/my-recipes">My Recipes</a></li>
+        <li class="list-group-item"><a (click)="logout()"class="text-danger">Logout</a></li>
+    </ul>
+</section>
