@@ -2,7 +2,7 @@ import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faBookmark, faClock, faStar as faStarRegular} from '@fortawesome/free-regular-svg-icons';
-import { faArrowLeft, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faBookBookmark, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { Recipe } from 'src/app/recipe.model';
 import { RecipeService } from '../../recipe.service';
@@ -18,7 +18,8 @@ export class ViewRecipeComponent implements OnInit {
   faClock = faClock
   faStarRegular = faStarRegular
   faStarSolid = faStarSolid
-
+  faBookmark = faBookmark
+  faSaved = faBookBookmark
 
   selectedRecipe: Recipe | null;
   recipeId: any;
@@ -26,9 +27,8 @@ export class ViewRecipeComponent implements OnInit {
   allReviews: any[] = [];
   averageRating: number;
   reviewsLength = 0;
-  saveRecipe: Boolean;
+  isSaved: Boolean | undefined;
 
-  faBookmark = faBookmark
 
   constructor(
     private recipeService: RecipeService, 
@@ -67,6 +67,7 @@ export class ViewRecipeComponent implements OnInit {
             this.selectedRecipe = responseData
             console.log(this.selectedRecipe)
             console.log(this.selectedRecipe?.recipeIngredient)
+            this.isSaved = this.selectedRecipe.isSaved
           } catch (error){
             console.error(error)
           }
@@ -115,11 +116,16 @@ export class ViewRecipeComponent implements OnInit {
   // }
 
   toggleSave(){
-    this.saveRecipe = !this.saveRecipe;
-    console.log(this.saveRecipe)
-    this.apiService.saveRecipe(this.recipeId, this.saveRecipe)
-    .subscribe(responseData => {
+    // this.saveRecipe = !this.saveRecipe;
+    // console.log(this.saveRecipe)
+    
+    this.apiService.saveRecipe(this.recipeId)
+    .subscribe({next: responseData => {
       console.log(responseData)
-    })
+      this.isSaved = !this.isSaved
+    }, error: error => {
+      console.log(error)
+    }
+  })
   }
 }

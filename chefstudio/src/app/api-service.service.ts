@@ -15,11 +15,14 @@ export class ApiServiceService {
 	getRecipesByUserIdUrl = "http://127.0.0.1:3000/recommend";
 	getRecipeByIdUrl = "http://127.0.0.1:3000/getrecipebyid";
 	getSavedRecipeUrl = "http://127.0.0.1:3000/saved-recipe";
+	getCreatedRecipeUrl = "http://127.0.0.1:3000/created-recipes";
 	getReviewsByRecipeIdUrl = "http://127.0.0.1:3000/get-reviews/";
 	getRecipesByCategoryUrl = "http://127.0.0.1:3000/getrecipesbycategory/";
 	getRecipesByKeywordUrl = "http://127.0.0.1:3000/getrecipesbykeyword/";
 	saveRecipeUrl = "http://127.0.0.1:3000/save-recipe";
 	registerUrl = "http://127.0.0.1:3000/user/register";
+	loginUrl = "http://127.0.0.1:3000/user/login";
+	updateUserUrl = "http://127.0.0.1:3000/user/update-user";
 
 	getRecipes(query: string){
 		const queryParams = new HttpParams().append('query', query.trim())
@@ -44,6 +47,10 @@ export class ApiServiceService {
 		return this.http.get<any>(this.getSavedRecipeUrl)
 	}
 
+	getCreatedRecipe(){
+		return this.http.get<any>(this.getCreatedRecipeUrl)
+	}
+
 	getReviews(id: number|string){
 		// const queryParams = new HttpParams().append('id', id)
 		return this.http.get<any>(this.getReviewsByRecipeIdUrl+id)
@@ -57,9 +64,21 @@ export class ApiServiceService {
 		return this.http.get<any>(this.getRecipesByKeywordUrl+keyword)
 	}
 
-	saveRecipe(recipeId: number, saveFlag: any){
-		const params = new HttpParams().set('RecipeId', recipeId).set('save', saveFlag)
+	saveRecipe(recipeId: number){
+		const params = new HttpParams().set('RecipeId', recipeId)
 		return this.http.get<any>(this.saveRecipeUrl, {params: params})
+	}
+
+	updateUserPreferences(userPreferences: string[]){
+		return this.http.patch<any>(this.updateUserUrl, {"user_preferences": userPreferences})
+	}
+
+	register(user: any){
+		return this.http.post<any>(this.registerUrl, user)
+	}
+
+	login(user: any){
+		return this.http.post<any>(this.loginUrl, user)
 	}
 
 	getToken(){
@@ -68,10 +87,6 @@ export class ApiServiceService {
 
 	getOnboardingStatus(){
 		return localStorage.getItem('onboarding')
-	}
-
-	register(user: any){
-		return this.http.post<any>(this.registerUrl, user)
 	}
 
 }

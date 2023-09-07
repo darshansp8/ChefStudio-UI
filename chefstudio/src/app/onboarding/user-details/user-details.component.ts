@@ -15,32 +15,25 @@ export class UserDetailsComponent {
   category_preferences: string[] = []
 
   preference_options = [
-    {name: "Vegetarian", selected: false},
-    {name: "Non-Vegetarian", selected: false},
+    {name: "Vegetable", selected: false},
+    {name: "Chicken", selected: false},
     {name: "Vegan", selected: false},
-    {name: "Keto", selected: false},
-    {name: "Dairy-Free", selected: false}
+    {name: "Meat", selected: false},
   ]
 
   category_options = [
-    {name: "Main-dish", selected: false},
-    {name: "Breakfast", selected: false},
-    {name: "Soup", selected: false},
-    {name: "Salad", selected: false},
-    {name: "Desserts", selected: false},
-    {name: "Drinks", selected: false},
-    {name: "Side-dish", selected: false},
-    {name: "Bread", selected: false},
-    {name: "Meat and Prok", selected: false},
-    {name: "Fruits and Vegetables", selected: false},
-    {name: "World Cuisine", selected: false}
+    {name: "Very Low Carbs", selected: false},
+    {name: "Healthy", selected: false},
+    {name: "High Fibre", selected: false},
+    {name: "Low Cholesterol", selected: false},
+    {name: "High Protein", selected: false},
   ]
 
   cooktime_options = [
-    {name: "Quick and easy", selected: false},
-    {name: "Moderately quick", selected: false},
-    {name: "Flexible", selected: false},
-    {name: "Leisurely", selected: false},
+    {name: "< 15 Mins", selected: false},
+    {name: "< 30 Mins", selected: false},
+    {name: "< 60 Mins", selected: false},
+    {name: "< 4 Hours", selected: false},
   ]
 
   toggleOption(option: any){
@@ -88,7 +81,11 @@ export class UserDetailsComponent {
   saveDetails(){
     console.log("Done");
     console.log(this.category_preferences)
-    // localStorage.setItem('onboarding', true)
-    this.router.navigate(['/feed'])
+    this.apiService.updateUserPreferences(this.category_preferences)
+    .subscribe(responseData => {
+      console.log(responseData)
+      localStorage.setItem('onboarding', '1')
+      this.router.navigate(['/feed'])
+    })
   }
 }

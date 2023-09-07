@@ -1,7 +1,10 @@
 <section class="home">
-    <div class="row">
+    <div *ngIf= "this.resultArray.length != 0" class="row">
         <app-recipe-list class="col-12 col-md-4 col-lg-3 col-xl-3 mb-4 mx-auto"
             *ngFor="let recipeEl of resultArray"
             [recipe]="recipeEl"></app-recipe-list> 
+    </div>
+    <div *ngIf= "this.resultArray.length == 0" class="row align-items-center justify-content-center" style="height: calc(80dvh);">
+        <p class="text-center">No recipes saved at the moment!!!</p>
     </div>
 </section>

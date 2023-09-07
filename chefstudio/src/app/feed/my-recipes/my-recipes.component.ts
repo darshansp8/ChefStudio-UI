@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ApiServiceService } from 'src/app/api-service.service';
 import { Recipe } from 'src/app/recipe.model';
 
@@ -10,15 +12,22 @@ import { Recipe } from 'src/app/recipe.model';
 export class MyRecipesComponent {
   // faBookmark = faBookmark
 
+  faBack1 = faArrowLeft
+
   resultArray: Recipe[] = []
 
-  constructor(private apiService: ApiServiceService){}
+  constructor(private apiService: ApiServiceService, private router: Router){}
 
   ngOnInit(): void {
-    this.apiService.getRecipesByUserId()
+    this.apiService.getCreatedRecipe()
     .subscribe((responseData)=> {
       console.log(responseData)
-      this.resultArray = responseData
+      this.resultArray = responseData.response
     })
   }
+
+  backToFeed() {
+    this.router.navigate(['feed/user-profile'])
+  }
+
 }

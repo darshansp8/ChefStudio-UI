@@ -4,9 +4,9 @@
             <div class="row h-100">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="h3 text-light">{{this.step}}/{{this.totalstep}}</p>
-                    <a 
+                    <!-- <a 
                     routerLink="/feed"
-                    class="text-light user-details-skip">Skip</a>
+                    class="text-light user-details-skip">Skip</a> -->
                 </div>
                 <!-- <a 
                     routerLink="/feed"
@@ -14,7 +14,7 @@
                 <div 
                     *ngIf="step==1"
                     class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
-                    <p class="user-details-question text-light">Choose your diet preferences</p>
+                    <p class="user-details-question text-light">Your preferred meals</p>
                     <div 
                         class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
                         <button 
@@ -36,7 +36,7 @@
                 <div 
                     *ngIf="step==2"
                     class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
-                    <p class="user-details-question text-light">Choose your favourite food category</p>
+                    <p class="user-details-question text-light">You are more into...</p>
                     <div 
                         class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
                         <button 
@@ -58,7 +58,7 @@
                 <div 
                     *ngIf="step==3"
                     class="col-12 d-flex flex-column align-items-center justify-content-between question-body">
-                    <p class="user-details-question text-light">Choose your preferred cooking time</p>
+                    <p class="user-details-question text-light">Great!!! Tell us more about your cooking session</p>
                     <div 
                         class="options col-12 col-md-6 col-lg-6 col-xl-6 mx-auto d-flex flex-wrap justify-content-around align-items-center">
                         <button 
