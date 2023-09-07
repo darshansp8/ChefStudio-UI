@@ -1,23 +1,5 @@
 <!-- <div class="recipe" (click)="onSelected()">
     <div class="recipe-image">
-        <img [src]="recipe.images" alt="{{recipe.name}}" class="img-fluid">
-    </div>
-    <div class="recipe-body">
-        <div class="row px-2">
-            <div class="col-10">
-                <p>Ratings <span>{{recipe.rating}} ratings</span></p>
-            </div>
-            <div class="col-2 d-flex flex-column align-items-end">
-                <a href="#"><fa-icon [classes]="['fa-solid']" [icon]="faBookmark"></fa-icon></a>
-            </div>
-        </div>
-        <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
-            <p class="recipe-description px-2">{{recipe.description}}</p>
-    </div>
-</div> -->
-
-<div class="recipe" (click)="onSelected()">
-    <div class="recipe-image">
         <div *ngFor="let image of recipe.images | slice:0:1">
             <img [src]="image || '../../../assets/no-preview-available.png'" alt="{{recipe.name}}" class="img-fluid">
         </div>
@@ -33,7 +15,43 @@
         </div>
         <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
         <p class="recipe-description px-2">{{recipe.description}}</p>
-        <!-- <p class="recipe-similarity px-2">Similarity: {{recipe.similarity | number : '1.2-2'}}</p> -->
+    </div>
+</div>
+ -->
+
+ <div class="recipe" (click)="onSelected()">
+    <div class="recipe-image">
+        <div *ngIf="recipe.images?.length == 0">
+            <img [src]="'../../../assets/no-preview-available.png'" alt="{{recipe.name}}" class="img-fluid w-100">
+        </div>
+        <div *ngIf="recipe.images?.length != 0">
+            <div *ngFor="let image of recipe.images | slice:0:1">
+                <img [src]="image || '../../../assets/no-preview-available.png'" alt="{{recipe.name}}" class="img-fluid w-100">
+            </div>
+        </div>
+    </div>
+    <div class="recipe-body">
+        <div class="row px-2 justify-content-center">
+            <div class="col-8 d-flex align-items-center">
+                <p class="m-0" *ngIf="recipe.rating">Average Ratings <span>{{recipe.rating}}</span></p>
+            </div>
+            <div class="col-4">
+                <div class="row d-flex justify-content-end align-items-center">
+                    <div class="col-4" *ngIf="showOptions">
+                        <button class="btn" (click)="onDelete($event)"><fa-icon [icon]="faDelete"></fa-icon></button>
+                    </div>
+                    <div class="col-4" *ngIf="showOptions">
+                        <button class="btn" (click)="onEdit($event)"><fa-icon [icon]="faPencil"></fa-icon></button>
+                    </div>
+                    <!-- <div class="col-4">
+                        <a href="#"><fa-icon [icon]="faBookmark"></fa-icon></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <h4 class="recipe-title px-2">{{recipe.name}}</h4>    
+        <p class="recipe-description px-2">{{recipe.description}}</p>
+        <p class="recipe-similarity px-2" *ngIf="recipe.similarity">Similarity: {{recipe.similarity | number : '1.0-0'}}%</p>
     </div>
 </div>
 

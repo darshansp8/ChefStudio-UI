@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { compileNgModule } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -37,7 +38,8 @@ export class ViewRecipeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private _fb: FormBuilder, 
-    private apiService: ApiServiceService) { }
+    private apiService: ApiServiceService,
+    private location: Location) { }
 
   ngOnInit() {
     // this.recipeService.recipeSelected
@@ -81,7 +83,7 @@ export class ViewRecipeComponent implements OnInit {
             console.error(error)
           }
         })
-        
+
         this.fetchReviews();
   
     }
@@ -111,7 +113,8 @@ export class ViewRecipeComponent implements OnInit {
   }
 
   backToFeed() {
-    this.router.navigate(['feed'])
+    // this.router.navigate(['feed'])
+    this.location.back();
   }
 
   onCategorySelected(category:string|undefined){

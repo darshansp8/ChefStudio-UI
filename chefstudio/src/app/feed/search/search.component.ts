@@ -6,6 +6,7 @@ import { faArrowAltCircleLeft, faArrowLeft, faBookBookmark, faSearch } from '@fo
 import { ApiServiceService } from 'src/app/api-service.service';
 import { map } from 'rxjs/operators';
 import { Recipe } from 'src/app/recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -63,7 +64,8 @@ export class SearchComponent implements OnInit {
 
 
   constructor(
-    private apiservice: ApiServiceService
+    private apiService: ApiServiceService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -79,39 +81,7 @@ export class SearchComponent implements OnInit {
     this.searchQuery = form.value.search.trim()
     console.log(this.searchQuery)
 
-    if (this.searchQuery) {
-	  this.displayResult = !this.displayResult
-      this.apiservice.getRecipes(this.searchQuery)
-        .pipe(map(responseData => {
-          const recipeArray = [];
-          const recipe_details: any = [];
-          // recipe_details.push(responseData)
-          responseData['recipe_details'][0].forEach((recipe: any) => recipe_details.push(recipe))
-          console.log(recipe_details.length)
-          // for (const key in recipe_details){
-          //   if (recipe_details.hasOwnProperty(key)){
-          //     recipeArray.push({ ...recipe_details[key], id: key })
-          //   }
-          // }
-          return recipe_details;
-        }))
-        .subscribe((responseData) => {
-          this.resultArray = []
-          // console.log(responseData[0][2])
-          // console.log(typeof(responseData))
-          // for (const recipe in responseData){
-          //   console.log(recipe)
-          //   this.resultArray.push(responseData[recipe][0])
-          // }
-          responseData.forEach((recipe: any) => this.resultArray.push(recipe))
-
-          console.log(this.resultArray)
-          console.log(this.resultArray.length)
-          console.log(typeof(this.resultArray[0]?.images))
-          this.resultArray.forEach((recipe: any) => JSON.parse(recipe?.images))
-          // console.log(this.resultArray[0]?.images?.at(0))
-        })
-    }
+    this.router.navigate(['feed/search-results', this.searchQuery])
   }
 
   closeSearchResult() {

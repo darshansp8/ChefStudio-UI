@@ -28,6 +28,7 @@ import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 import { SavedComponent } from './feed/saved/saved.component';
 import { ViewReviewComponent } from './feed/recipe/view-review/view-review.component';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { SearchResultRouteComponent } from './feed/search/search-result-route/search-result-route.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     EditRecipeComponent,
     MyRecipesComponent,
     SavedComponent,
-    ViewReviewComponent
+    ViewReviewComponent,
+    SearchResultRouteComponent
   ],
   imports: [
     BrowserModule,

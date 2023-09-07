@@ -9,6 +9,7 @@ import { KeywordListComponent } from './feed/keyword-list/keyword-list.component
 import { MyRecipesComponent } from './feed/my-recipes/my-recipes.component';
 import { ViewRecipeComponent } from './feed/recipe/view-recipe/view-recipe.component';
 import { SavedComponent } from './feed/saved/saved.component';
+import { SearchResultRouteComponent } from './feed/search/search-result-route/search-result-route.component';
 import { SearchComponent } from './feed/search/search.component';
 import { UserProfileComponent } from './feed/user-profile/user-profile.component';
 import { HeaderComponent } from './header/header.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'feed', component: FeedComponent, children:[
     {path: '', component: HomeComponent},
     {path: 'search', component: SearchComponent},
+    {path: 'search-results/:search_query', component: SearchResultRouteComponent},
     {path: 'saved', component: SavedComponent},
     {path: 'user-profile', component: UserProfileComponent}
   ]},

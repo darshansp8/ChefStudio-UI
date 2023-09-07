@@ -1,0 +1,18 @@
+<!-- Search Result -->
+<section 
+    class="search-result">
+    <div class="row">
+        <h2 class="mb-5">
+            <a (click)="goBack()" class="text-center back-icon">
+                <fa-icon [icon]="faBack1"></fa-icon>
+            </a>
+        </h2>
+        <h1 class="mb-3">Showing ressults for:</h1>
+        <p>{{this.searchQuery}}</p>
+        <div class="row">
+            <app-search-result class="col-12 col-md-4 col-lg-3 col-xl-3 mb-4 mx-auto"
+            *ngFor="let recipeEl of resultArray"
+            [recipe]="recipeEl"></app-search-result>  
+        </div>
+    </div>
+</section>
